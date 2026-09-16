@@ -37,7 +37,7 @@ const events: Event[] = [
 ];
 
 export default function Events() {
-  useDocumentTitle("Events — OCTRI");
+  useDocumentTitle("Upcoming Events & Training Camps", "OCTRI team events, training camps, and race calendar for triathletes in Egypt. From endurance festivals to free community sessions.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

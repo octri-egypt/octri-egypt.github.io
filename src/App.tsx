@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Outlet, useLocation, useRouteError, isRouteErrorResponse } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { StructuredData } from "./components/StructuredData";
 
 function ErrorView() {
   const error = useRouteError();
@@ -40,6 +41,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <StructuredData />
       <Header />
       <main className="flex-1">{error ? <ErrorView /> : <Outlet />}</main>
       <Footer />

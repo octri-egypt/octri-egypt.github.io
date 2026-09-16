@@ -1,10 +1,32 @@
 import { MapPin, Facebook, Instagram, Globe, Linkedin, MessageCircle, Youtube, ExternalLink } from "lucide-react";
+
+interface TikTokProps {
+  size?: number;
+  strokeWidth?: number;
+  className?: string;
+}
+
+const TikTok = ({ size = 18, className }: TikTokProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M17.5 7.5a5.5 5.5 0 0 1 0 9h-3a3.5 3.5 0 0 1 0-7h3a2 2 0 0 1 0 4H8a5 5 0 0 0 0 10h3.5a1.5 1.5 0 0 0 1.5-1.5V11h2.5v6h-2.5v-3.5a1.5 1.5 0 0 1 3 0V17h2.5a1.5 1.5 0 0 0 1.5-1.5v-6.5A1.5 1.5 0 0 0 17.5 7.5z" />
+  </svg>
+);
 import { SectionHeading } from "@/components/SectionHeading";
 import { PageHeader } from "@/components/PageHeader";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { JOIN_FORM } from "@/lib/constants";
 
-type Social = { icon: typeof Facebook; href: string; label: string };
+type SocialIcon = typeof Facebook | typeof Instagram | typeof Youtube | typeof Linkedin | typeof Globe | typeof MessageCircle | typeof TikTok;
+
+type Social = { icon: SocialIcon; href: string; label: string };
 
 type Partner = {
   name: string;
@@ -34,7 +56,7 @@ const partners: Partner[] = [
       { icon: Facebook, href: "https://www.facebook.com/", label: "Facebook" },
       { icon: Instagram, href: "https://www.instagram.com/", label: "Instagram" },
       { icon: MessageCircle, href: "https://wa.me/", label: "WhatsApp" },
-      { icon: MessageCircle, href: "https://www.tiktok.com/", label: "TikTok" },
+      { icon: TikTok, href: "https://www.tiktok.com/", label: "TikTok" },
       { icon: Globe, href: "https://blkcatagnc.com", label: "Website" },
     ],
   },
@@ -46,7 +68,7 @@ const partners: Partner[] = [
       { icon: Facebook, href: "https://www.facebook.com/OceanTriathlonAcademy", label: "Facebook" },
       { icon: Instagram, href: "https://www.instagram.com/octri_team", label: "Instagram" },
       { icon: Youtube, href: "https://www.youtube.com/@octri", label: "YouTube" },
-      { icon: MessageCircle, href: "https://www.tiktok.com/@octri_team", label: "TikTok" },
+      { icon: TikTok, href: "https://www.tiktok.com/@octri_team", label: "TikTok" },
       { icon: MessageCircle, href: "https://wa.me/201030230039", label: "WhatsApp" },
       { icon: Linkedin, href: "https://www.linkedin.com/company/imc-hub", label: "LinkedIn" },
     ],
@@ -54,7 +76,7 @@ const partners: Partner[] = [
 ];
 
 export default function Partners() {
-  useDocumentTitle("Our Partners — OCTRI");
+  useDocumentTitle("Partners & Sponsors", "Organizations and brands supporting Ocean Triathlon Team Egypt: Bike Masters, BLK Cat AGNC, and Ocean Triathlon Academy.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 
 export default function NotFound() {
-  useDocumentTitle("Page Not Found — OCTRI");
+  useDocumentTitle("Page Not Found", "The page you're looking for doesn't exist. Return to OCTRI Egypt homepage for triathlon training programs, schedules, and community.");
 
   return (
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center px-4">

@@ -26,7 +26,7 @@ const stats = [
 ];
 
 export default function Home() {
-  useDocumentTitle();
+  useDocumentTitle(undefined, "Egypt's premier triathlon team. Professional coaching for swimming, cycling, and running since 2017. Join our community in Cairo.");
 
   return (
     <>

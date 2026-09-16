@@ -24,7 +24,7 @@ const galleryTags = [
 ];
 
 export default function Achievements() {
-  useDocumentTitle("Achievements — OCTRI");
+  useDocumentTitle("Achievements & Race Results", "OCTRI athletes' race results, podium finishes, and championship titles in Egypt triathlon events since 2017.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

@@ -14,7 +14,7 @@ const sessions: Record<string, { name: string; time: string; icon: typeof Waves 
 };
 
 export default function Schedule() {
-  useDocumentTitle("Weekly Schedule — OCTRI");
+  useDocumentTitle("Weekly Training Schedule", "Weekly training schedule for swimming, cycling, and running sessions with OCTRI Egypt. Consistent daily sessions across Cairo locations.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

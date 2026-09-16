@@ -30,7 +30,7 @@ const focusAreas: Focus[] = [
 ];
 
 export default function Fitness() {
-  useDocumentTitle("Fitness — OCTRI");
+  useDocumentTitle("Fitness & Conditioning", "Strength, conditioning, and fitness training programs designed for triathletes by OCTRI coaches. Upper body, lower body, core, mobility, and triathlon-specific fitness.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

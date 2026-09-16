@@ -30,7 +30,7 @@ const services = [
 ];
 
 export default function Services() {
-  useDocumentTitle("Services & Programs — OCTRI");
+  useDocumentTitle("Training Programs", "Explore OCTRI's professional triathlon training programs: Swimming, Cycling, and Running. Certified coaches, structured plans for all levels.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

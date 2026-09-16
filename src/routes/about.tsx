@@ -25,7 +25,7 @@ const principles = [
 ];
 
 export default function About() {
-  useDocumentTitle("About — OCTRI Ocean Triathlon Team");
+  useDocumentTitle("About OCTRI", "Learn about Ocean Triathlon Team Egypt, established in 2017. Professional coaching for competitive and amateur triathletes in Cairo.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

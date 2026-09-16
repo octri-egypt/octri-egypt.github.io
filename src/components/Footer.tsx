@@ -1,6 +1,26 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Youtube, Linkedin, MessageCircle, Mail, MapPin, Phone, Map, ArrowRight } from "lucide-react";
+import { Instagram, Facebook, Youtube, Linkedin, Mail, MapPin, Phone, Map, ArrowRight } from "lucide-react";
 import { SOCIAL, CONTACT, JOIN_FORM } from "@/lib/constants";
+
+interface TikTokProps {
+  size?: number;
+  strokeWidth?: number;
+  className?: string;
+}
+
+const TikTok = ({ size = 18, className }: TikTokProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M17.5 7.5a5.5 5.5 0 0 1 0 9h-3a3.5 3.5 0 0 1 0-7h3a2 2 0 0 1 0 4H8a5 5 0 0 0 0 10h3.5a1.5 1.5 0 0 0 1.5-1.5V11h2.5v6h-2.5v-3.5a1.5 1.5 0 0 1 3 0V17h2.5a1.5 1.5 0 0 0 1.5-1.5v-6.5A1.5 1.5 0 0 0 17.5 7.5z" />
+  </svg>
+);
 
 const MAPS_URL = "https://maps.app.goo.gl/97daZ8knbEExrAtJ6";
 
@@ -64,7 +84,7 @@ export function Footer() {
             <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><Instagram size={18} /></a>
             <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><Facebook size={18} /></a>
             <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><Youtube size={18} /></a>
-            <a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><MessageCircle size={18} /></a>
+            <a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><TikTok size={18} /></a>
             <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><Linkedin size={18} /></a>
           </div>
         </div>

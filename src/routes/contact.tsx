@@ -4,7 +4,7 @@ import { useDocumentTitle } from "@/hooks/use-document-title";
 import { JOIN_FORM, CONTACT, SOCIAL } from "@/lib/constants";
 
 export default function Contact() {
-  useDocumentTitle("Contact OCTRI — Join the Team");
+  useDocumentTitle("Contact Us", "Get in touch with Ocean Triathlon Team Egypt. Join us, ask about coaching programs, or partner with OCTRI. Location in Cairo, email, phone, and WhatsApp.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

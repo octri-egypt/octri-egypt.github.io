@@ -46,7 +46,7 @@ function PriceCard({ title, icon: Icon, rows, badge }: { title: string; icon: ty
 }
 
 export default function Offers() {
-  useDocumentTitle("Offers & Pricing — OCTRI");
+  useDocumentTitle("Membership Offers & Pricing", "View current OCTRI Egypt membership offers and training packages for Swimming, Cycling, Running, Fitness, and Nutrition programs.");
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">

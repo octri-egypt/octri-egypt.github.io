@@ -1,9 +1,13 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { generateMetadata, injectMetadata } from "@/lib/seo";
 
-const DEFAULT_TITLE = "OCTRI — Ocean Triathlon Team Egypt | Together We Tri";
+export function useDocumentTitle(title?: string, description?: string) {
+  const location = useLocation();
 
-export function useDocumentTitle(title?: string) {
   useEffect(() => {
-    document.title = title ?? DEFAULT_TITLE;
-  }, [title]);
+    const meta = generateMetadata({ title, description, path: location.pathname });
+    document.title = meta.title;
+    injectMetadata(meta);
+  }, [title, description, location.pathname]);
 }
