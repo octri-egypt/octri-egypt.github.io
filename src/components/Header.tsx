@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "@/assets/logo-cycle.png";
 import { JOIN_FORM } from "@/lib/constants";
 
 const CLOSE_DELAY = 200;
@@ -83,7 +82,7 @@ export function Header() {
     >
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="OCTRI logo" width={40} height={40} className="w-10 h-10 group-hover:scale-110 transition-smooth" />
+          <img src="/favicon.svg" alt="OCTRI logo" width={40} height={40} className="w-10 h-10 group-hover:scale-110 transition-smooth" />
           <div className="leading-tight">
             <div className="font-display text-xl tracking-wider text-foreground">OCTRI</div>
             <div className="text-[10px] tracking-[0.2em] text-primary uppercase">Together We Tri</div>

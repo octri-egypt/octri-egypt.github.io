@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Linkedin, MessageCircle, Mail, MapPin, Phone, Map, ArrowRight } from "lucide-react";
-import logo from "@/assets/logo-cycle.png";
 import { SOCIAL, CONTACT, JOIN_FORM } from "@/lib/constants";
 
 const MAPS_URL = "https://maps.app.goo.gl/97daZ8knbEExrAtJ6";
@@ -11,7 +10,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="" width={40} height={40} className="w-10 h-10" />
+            <img src="/favicon.svg" alt="" width={40} height={40} className="w-10 h-10" />
             <div>
               <div className="font-display text-2xl tracking-wider">OCTRI</div>
               <div className="text-[10px] tracking-[0.2em] text-primary uppercase">Together We Tri</div>
