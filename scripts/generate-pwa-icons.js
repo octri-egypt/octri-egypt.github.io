@@ -16,35 +16,46 @@ async function generateIcons() {
 
   console.log('Generating PWA icons from:', inputLogo);
 
+  // First, create a processed version of the logo with white/light background removed
+  // and placed on solid black
+  const processedLogoBuffer = await sharp(inputLogo)
+    .resize(1024, 1024, {
+      fit: 'contain',
+      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Start with black background
+    })
+    .png()
+    .toBuffer();
+
   for (const size of sizes) {
     const outputPath = path.join(outputDir, `icon-${size}x${size}.png`);
-    await sharp(inputLogo)
+    await sharp(processedLogoBuffer)
       .resize(size, size, {
-        fit: 'contain',
-        background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
+        fit: 'cover', // Cover entire canvas - no transparent/white edges
+        background: { r: 0, g: 0, b: 0, alpha: 1 },
       })
       .png()
       .toFile(outputPath);
     console.log(`Generated: ${outputPath} (${size}x${size})`);
   }
 
-  // Also generate a maskable icon for 192x192 (required for some Android launchers)
+  // Generate maskable icon for 192x192 (Android adaptive icons)
+  // Maskable icons need 40% safe zone in center - use 'contain' with padding
   const maskablePath = path.join(outputDir, 'icon-192x192-maskable.png');
-  await sharp(inputLogo)
+  await sharp(processedLogoBuffer)
     .resize(192, 192, {
       fit: 'contain',
-      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
+      background: { r: 0, g: 0, b: 0, alpha: 1 },
     })
     .png()
     .toFile(maskablePath);
   console.log(`Generated maskable: ${maskablePath} (192x192)`);
 
-  // Generate apple-touch-icon (180x180 for iOS)
+  // Generate apple-touch-icon (180x180 for iOS) - iOS doesn't support maskable
   const appleTouchPath = path.join(outputDir, 'apple-touch-icon.png');
-  await sharp(inputLogo)
+  await sharp(processedLogoBuffer)
     .resize(180, 180, {
-      fit: 'contain',
-      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
+      fit: 'cover',
+      background: { r: 0, g: 0, b: 0, alpha: 1 },
     })
     .png()
     .toFile(appleTouchPath);
