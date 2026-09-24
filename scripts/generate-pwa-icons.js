@@ -16,13 +16,40 @@ async function generateIcons() {
 
   console.log('Generating PWA icons from:', inputLogo);
 
-  // First, create a processed version of the logo with white/light background removed
-  // and placed on solid black
+  // First, get the bounding box of the actual logo content
+  const metadata = await sharp(inputLogo).metadata();
+  const { width: w, height: h } = metadata;
+
+  const raw = await sharp(inputLogo)
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  let minX = w, maxX = 0, minY = h, maxY = 0;
+  const { data } = raw;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const idx = (y * w + x) * 4;
+      if (data[idx + 3] > 0) { // alpha > 0
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+
+  const cropWidth = maxX - minX + 1;
+  const cropHeight = maxY - minY + 1;
+  console.log(`Logo bounding box: ${cropWidth}x${cropHeight} at (${minX}, ${minY})`);
+
+  // Crop to content, then resize to square on black background
   const processedLogoBuffer = await sharp(inputLogo)
+    .extract({ left: minX, top: minY, width: cropWidth, height: cropHeight })
     .resize(1024, 1024, {
       fit: 'contain',
-      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Start with black background
+      background: { r: 0, g: 0, b: 0, alpha: 1 },
     })
+    .flatten({ background: { r: 0, g: 0, b: 0 } })
     .png()
     .toBuffer();
 
@@ -30,8 +57,8 @@ async function generateIcons() {
     const outputPath = path.join(outputDir, `icon-${size}x${size}.png`);
     await sharp(processedLogoBuffer)
       .resize(size, size, {
-        fit: 'cover', // Cover entire canvas - no transparent/white edges
-        background: { r: 0, g: 0, b: 0, alpha: 1 },
+        fit: 'contain',
+        background: { r: 0, g: 0, b: 0 },
       })
       .png()
       .toFile(outputPath);
@@ -44,8 +71,9 @@ async function generateIcons() {
   await sharp(processedLogoBuffer)
     .resize(192, 192, {
       fit: 'contain',
-      background: { r: 0, g: 0, b: 0, alpha: 1 },
+      background: { r: 0, g: 0, b: 0 },
     })
+    .flatten({ background: { r: 0, g: 0, b: 0 } })
     .png()
     .toFile(maskablePath);
   console.log(`Generated maskable: ${maskablePath} (192x192)`);
@@ -54,9 +82,10 @@ async function generateIcons() {
   const appleTouchPath = path.join(outputDir, 'apple-touch-icon.png');
   await sharp(processedLogoBuffer)
     .resize(180, 180, {
-      fit: 'cover',
-      background: { r: 0, g: 0, b: 0, alpha: 1 },
+      fit: 'contain',
+      background: { r: 0, g: 0, b: 0 },
     })
+    .flatten({ background: { r: 0, g: 0, b: 0 } })
     .png()
     .toFile(appleTouchPath);
   console.log(`Generated apple-touch-icon: ${appleTouchPath} (180x180)`);
