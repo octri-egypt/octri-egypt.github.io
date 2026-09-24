@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useRouteError, isRouteErrorResponse } from "
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { StructuredData } from "./components/StructuredData";
+import { PWAInstallBanner } from "./components/PWAInstallBanner";
 
 function ErrorView() {
   const error = useRouteError();
@@ -45,6 +46,7 @@ export default function App() {
       <Header />
       <main className="flex-1">{error ? <ErrorView /> : <Outlet />}</main>
       <Footer />
+      <PWAInstallBanner />
     </div>
   );
 }
