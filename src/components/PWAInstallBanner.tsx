@@ -9,7 +9,7 @@ import { usePWAInstall } from "@/hooks/use-pwa-install";
  * Shows different UI based on platform capabilities:
  * - Android/Chromium: Native install button triggering beforeinstallprompt
  * - iOS/iPadOS: Instructions for "Share → Add to Home Screen"
- * - Desktop: Native install button or browser menu instructions
+ * - Desktop: Native install button when beforeinstallprompt fires
  * - Unsupported: No banner shown
  *
  * Respects user dismissal and doesn't show when already installed.
@@ -27,7 +27,6 @@ export function PWAInstallBanner() {
   } = usePWAInstall();
 
   const [showBanner, setShowBanner] = useState(false);
-  const [showInstructions, setShowInstructions] = useState(false);
 
   // Determine if we should show the banner
   useEffect(() => {
@@ -49,24 +48,32 @@ export function PWAInstallBanner() {
       return;
     }
 
-    // Show banner after a brief delay for better UX
-    const timer = setTimeout(() => {
-      if (isInstallable || isIOS || installInstructions) {
+    // Show banner when:
+    // - Native prompt is available (isInstallable = true) → show Install button
+    // - iOS → show instructions
+    // - NOT when only fallback instructions would show (isInstallable = false, not iOS)
+    if (isInstallable || isIOS) {
+      const timer = setTimeout(() => {
         setShowBanner(true);
-        if (isIOS || installInstructions) {
-          setShowInstructions(true);
-        }
-      }
-    }, 5000); // 5 second delay
+      }, 3000); // 3 second delay
 
-    return () => clearTimeout(timer);
-  }, [isInstalled, isInstallable, isIOS, isUnsupported, installInstructions, wasBannerDismissed]);
+      return () => clearTimeout(timer);
+    }
+
+    // If not installable and not iOS, don't show banner at all
+    setShowBanner(false);
+  }, [isInstalled, isInstallable, isIOS, isUnsupported, wasBannerDismissed]);
 
   // Handle install button click
   const handleInstall = async () => {
-    if (isIOS || installInstructions) {
-      // On iOS or when only instructions available, show detailed instructions
-      setShowInstructions(true);
+    if (isIOS) {
+      // On iOS, we don't have a native prompt - the banner itself shows instructions
+      // This shouldn't be reached since iOS shows instructions directly
+      return;
+    }
+
+    if (!isInstallable) {
+      // No native prompt available - shouldn't happen since button is disabled
       return;
     }
 
@@ -90,7 +97,7 @@ export function PWAInstallBanner() {
   }
 
   // iOS / Instructional mode
-  if (showInstructions) {
+  if (isIOS) {
     return (
       <div
         className="fixed bottom-0 left-0 right-0 z-50 animate-fade-up"
@@ -110,9 +117,7 @@ export function PWAInstallBanner() {
                     Install OCTRI
                   </h3>
                   <p id="ios-install-instructions" className="mt-1 text-sm text-muted-foreground">
-                    {isIOS
-                      ? "Tap the Share button <Share2 className=\"inline w-3 h-3\" aria-hidden=\"true\" /> then <strong>\"Add to Home Screen\"</strong> to install OCTRI."
-                      : installInstructions || "Use your browser's menu to install OCTRI."}
+                    Tap the Share button <Share2 className="inline w-3 h-3" aria-hidden="true" /> then <strong>"Add to Home Screen"</strong> to install OCTRI.
                   </p>
                 </div>
                 <button
@@ -124,38 +129,36 @@ export function PWAInstallBanner() {
                 </button>
               </div>
 
-              {isIOS && (
-                <div className="mt-4 p-3 bg-background/50 rounded-xl border border-border/50">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <Share2 className="w-4 h-4 text-primary" aria-hidden="true" />
-                    <span className="font-medium">Step by step:</span>
-                  </div>
-                  <ol className="space-y-1.5 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
-                        1
-                      </span>
-                      Tap the <strong>Share</strong> button (square with arrow up) at the bottom of Safari
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
-                        2
-                      </span>
-                      Scroll down and tap <strong>"Add to Home Screen"</strong>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
-                        3
-                      </span>
-                      Tap <strong>"Add"</strong> in the top right corner
-                    </li>
-                  </ol>
+              <div className="mt-4 p-3 bg-background/50 rounded-xl border border-border/50">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Share2 className="w-4 h-4 text-primary" aria-hidden="true" />
+                  <span className="font-medium">Step by step:</span>
                 </div>
-              )}
+                <ol className="space-y-1.5 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
+                      1
+                    </span>
+                    Tap the <strong>Share</strong> button (square with arrow up) at the bottom of Safari
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
+                      2
+                    </span>
+                    Scroll down and tap <strong>"Add to Home Screen"</strong>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-5 h-5 flex items-center justify-center text-[10px] font-medium bg-primary/20 text-primary rounded-full">
+                      3
+                    </span>
+                    Tap <strong>"Add"</strong> in the top right corner
+                  </li>
+                </ol>
+              </div>
 
               <div className="mt-4 flex gap-2">
                 <button
-                  onClick={() => setShowInstructions(false)}
+                  onClick={() => handleDismiss(false)}
                   className="flex-1 px-4 py-2.5 rounded-xl border border-border bg-background/50 text-sm font-medium text-foreground hover:bg-background transition-smooth"
                 >
                   Got it
@@ -174,7 +177,7 @@ export function PWAInstallBanner() {
     );
   }
 
-  // Standard install banner (Android, Desktop Chromium, etc.)
+  // Standard install banner (Android, Desktop Chromium, etc.) - ONLY shows when isInstallable=true
   return (
     <div
       className="fixed bottom-0 left-0 right-0 z-50 animate-fade-up"

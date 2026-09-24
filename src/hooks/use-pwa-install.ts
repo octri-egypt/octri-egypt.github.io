@@ -92,12 +92,14 @@ export function usePWAInstall(): UsePWAInstallReturn {
       setDeferredPrompt(promptEvent);
       setIsInstallable(true);
       setIsUnsupported(false);
+      setInstallInstructions(null); // Clear fallback instructions when native prompt available
     };
 
     const handleAppInstalled = () => {
       setIsInstalled(true);
       setIsInstallable(false);
       setDeferredPrompt(null);
+      setInstallInstructions(null);
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -115,17 +117,8 @@ export function usePWAInstall(): UsePWAInstallReturn {
 
         if (isChromium || isFirefox) {
           // These browsers support PWA installation
-          // We'll wait for beforeinstallprompt or show instructions after a delay
-          setTimeout(() => {
-            if (!isInstallable && !isInstalled && deferredPrompt === null) {
-              // No native prompt available, but browser supports PWA
-              // Show instructional banner for manual installation
-              setIsUnsupported(false);
-              setInstallInstructions(
-                "To install OCTRI, use your browser's menu: ☰ → Install / Add to Home Screen"
-              );
-            }
-          }, 3000);
+          // We'll wait for beforeinstallprompt - DO NOT show fallback instructions
+          // The banner will only show when isInstallable becomes true
         } else if (isSafari && !isIOS) {
           // Desktop Safari - limited PWA support
           setIsUnsupported(true);
@@ -142,7 +135,7 @@ export function usePWAInstall(): UsePWAInstallReturn {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
-  }, [isIOS, isInstalled, isInstallable, deferredPrompt]);
+  }, [isIOS, isInstalled]);
 
   // Handle iOS-specific installation instructions
   useEffect(() => {
@@ -186,6 +179,7 @@ export function usePWAInstall(): UsePWAInstallReturn {
       if (outcome === "accepted") {
         setIsInstalled(true);
         setIsInstallable(false);
+        setDeferredPrompt(null);
         return true;
       } else {
         // User dismissed the native prompt

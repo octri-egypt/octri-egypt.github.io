@@ -161,6 +161,18 @@ export default defineConfig({
               },
             },
           },
+          // Ensure root path returns index.html with 200 for PWA start_url
+          {
+            urlPattern: ({ url }) => url.pathname === "/",
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "root-page",
+              networkTimeoutSeconds: 3,
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
         ],
         navigateFallback: "/index.html",
         navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/],

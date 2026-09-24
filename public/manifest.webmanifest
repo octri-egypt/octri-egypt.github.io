@@ -2,7 +2,7 @@
   "name": "OCTRI — Ocean Triathlon Team Egypt",
   "short_name": "OCTRI",
   "description": "Egypt's premier triathlon team. Swim, bike, run with professional coaching since 2017.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#161a2e",
   "theme_color": "#1a1f3a",
