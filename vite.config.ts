@@ -161,7 +161,7 @@ export default defineConfig({
               },
             },
           },
-          // Ensure root path returns index.html with 200 for PWA start_url
+          // Handle root path "/" - GitHub Pages returns 404, we need 200 for PWA
           {
             urlPattern: ({ url }) => url.pathname === "/",
             handler: "NetworkFirst",
@@ -174,6 +174,7 @@ export default defineConfig({
             },
           },
         ],
+        // SPA fallback: serve index.html for all navigations (returns 200 from precache)
         navigateFallback: "/index.html",
         navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/],
       },
