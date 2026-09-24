@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
-const inputLogo = path.resolve('src/assets/octri_logo.webp');
+const inputLogo = path.resolve('src/assets/octri_logo - cycle.webp');
 const outputDir = path.resolve('public/icons');
 
 async function generateIcons() {
@@ -21,7 +21,7 @@ async function generateIcons() {
     await sharp(inputLogo)
       .resize(size, size, {
         fit: 'contain',
-        background: { r: 22, g: 26, b: 46, alpha: 1 }, // --background color: oklch(0.16 0.05 250) ≈ #161a2e
+        background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
       })
       .png()
       .toFile(outputPath);
@@ -33,7 +33,7 @@ async function generateIcons() {
   await sharp(inputLogo)
     .resize(192, 192, {
       fit: 'contain',
-      background: { r: 22, g: 26, b: 46, alpha: 1 },
+      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
     })
     .png()
     .toFile(maskablePath);
@@ -44,7 +44,7 @@ async function generateIcons() {
   await sharp(inputLogo)
     .resize(180, 180, {
       fit: 'contain',
-      background: { r: 22, g: 26, b: 46, alpha: 1 },
+      background: { r: 0, g: 0, b: 0, alpha: 1 }, // Black background
     })
     .png()
     .toFile(appleTouchPath);
