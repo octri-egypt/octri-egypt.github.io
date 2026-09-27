@@ -85,3 +85,4 @@ npm run lint
   Reference `/blogs` is empty — no blog page was created. Fitness/offer descriptions were written
   on-brand because the reference had none; swap in real program details + photos when available.
 - Images are full-resolution JPEG/PNG; convert to AVIF/WebP + `srcset` for better Lighthouse scores.
+- `public/favicon.svg` must have inline `fill="#ffffff"` on the `<path>` element and no `<style>`/`@media (prefers-color-scheme)` blocks. SVGs used as `<img>` sources don't apply internal CSS stylesheets on Android browsers, causing the logo to render dimly — always hardcode fill colors for cross-platform consistency.
