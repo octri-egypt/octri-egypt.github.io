@@ -86,3 +86,95 @@ npm run lint
   on-brand because the reference had none; swap in real program details + photos when available.
 - Images are full-resolution JPEG/PNG; convert to AVIF/WebP + `srcset` for better Lighthouse scores.
 - `public/favicon.svg` must have inline `fill="#ffffff"` on the `<path>` element and no `<style>`/`@media (prefers-color-scheme)` blocks. SVGs used as `<img>` sources don't apply internal CSS stylesheets on Android browsers, causing the logo to render dimly — always hardcode fill colors for cross-platform consistency.
+
+## Recent Image Updates (2026-09-28)
+
+### Homepage (`src/routes/index.tsx`)
+- **Hero section**: `hero-swim.jpg` → `hero.webp`
+- **Services - Swimming**: `swim.jpg` → `swimming_program.webp`
+- **Services - Cycling**: `cycle.jpg` → `cycling_program.webp`
+- **Services - Running**: `run.jpg` → `running_program.webp`
+- **About OCTRI**: `team.jpg` → `about_octri.webp`
+- **Organize your goals**: `community.jpg` → `Organize_your_goals_with_us.webp`
+
+### About Page (`src/routes/about.tsx`)
+- **Main image**: `team.jpg` → `about.webp`
+
+### Services Page (`src/routes/services.tsx`)
+- **Swimming Program**: `swim.jpg` → `swimming_service.webp`
+- **Cycling Program**: `cycle.jpg` → `cycling_service.webp`
+- **Running Program**: `run.jpg` → `running_service.webp`
+
+All new images are WebP format, imported via `@/assets/` alias, with improved accessibility alt texts.
+Old images retained in `src/assets/` as they're still used by other pages (fitness.tsx, etc.).
+
+## PWA Implementation (Added 2026-09-24)
+
+### Stack
+- **Workbox** via `vite-plugin-pwa` (generateSW mode)
+- **Web App Manifest** with icons, shortcuts, categories
+- **Service Worker** with precaching, runtime caching, SPA navigation fallback
+
+### Key Files
+- `vite.config.ts` — VitePWA config with Workbox settings
+- `src/hooks/use-pwa-install.ts` — Installation detection hook (cross-platform)
+- `src/components/PWAInstallBanner.tsx` — Platform-aware install banner
+- `src/main.tsx` — SW registration with update detection
+- `index.html` — Apple PWA meta tags, theme-color, manifest link
+- `scripts/generate-pwa-icons.js` — Sharp script generating icons from `octri_logo - cycle.webp`
+- `public/icons/` — Generated icons (72-512px, maskable, apple-touch-icon)
+
+### Manifest Configuration
+- `start_url: "/"` — Root path (SW handles GitHub Pages 404)
+- `display: "standalone"` — App-like experience
+- `scope: "/"` — Full site scope
+- Icons: 10 sizes (72-512px) + maskable (192x192) + apple-touch-icon (180x180)
+- Shortcuts: Join, Programs, Schedule, Contact
+- Categories: sports, health, fitness
+
+### Service Worker Strategy
+- **Precache**: All static assets (HTML, JS, CSS, images, fonts, manifest)
+- **Runtime Caching**:
+  - Google Fonts (stylesheets + webfonts) — CacheFirst, 1 year
+  - Google APIs — StaleWhileRevalidate, 30 days
+  - Root path `/` — NetworkFirst, 3s timeout
+- **SPA Navigation Fallback**: `NavigationRoute` with `createHandlerBoundToURL("/index.html")`
+  - Serves precached `index.html` (200) for all navigations
+  - Fixes GitHub Pages 404 status for `/` and deep links
+  - Denylist: `/_/*` and file extensions
+
+### Installation UX
+- **Android/Chromium Desktop**: Native install button via `beforeinstallprompt`
+- **iOS/iPadOS**: Instructional modal (Share → Add to Home Screen)
+- **Unsupported browsers**: No banner shown
+- **Dismissal**: Persisted in localStorage (`octri-pwa-banner-dismissed-permanently`)
+- **Engagement heuristic**: Banner shows after 3s delay when `isInstallable=true` or iOS
+
+### Icon Generation
+- Source: `src/assets/octri_logo - cycle.webp` (white cycle on transparent)
+- Background: **Solid black** (`#000000`)
+- Padding: **15% all sides** (logo at 70% of canvas)
+- Maskable icon: **40% safe zone** (logo at 60%) for Android adaptive icons
+- All icons flattened (RGB, no alpha)
+- Run: `node scripts/generate-pwa-icons.js`
+
+### GitHub Pages PWA Quirks
+1. **Root path `/` returns 404** — Fixed by SW NavigationRoute serving precached `index.html` with 200
+2. **`start_url` must return 200** — SW handles this; manifest uses `/`
+3. **Deep links** — SW serves `index.html` (200), React Router handles routing
+4. **Icons cached at install** — Users must **uninstall/reinstall** for icon updates
+5. **SW updates** — `autoUpdate` mode; hourly update check in `main.tsx`
+
+### Common PWA Commands
+```bash
+node scripts/generate-pwa-icons.js  # Regenerate icons from source logo
+npm run build                       # Build with SW and manifest
+npm run preview                     # Test PWA locally (serves dist/)
+```
+
+### Troubleshooting
+- **404 on launch**: Uninstall PWA, clear site data, reinstall fresh
+- **Old icons showing**: Uninstall/reinstall (icons cached at install time)
+- **Install button not appearing**: Chrome requires ~30s engagement; banner waits for `beforeinstallprompt`
+- **Windows shows white icon**: Uninstall/reinstall; Windows caches icons at install
+- **iOS no native prompt**: Expected; shows instructional modal instead

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Waves, Bike, Activity, Trophy, Users, Calendar } from "lucide-react";
-import heroImg from "@/assets/hero-swim.jpg";
-import teamImg from "@/assets/team.jpg";
-import swimImg from "@/assets/swim.jpg";
-import cycleImg from "@/assets/cycle.jpg";
-import runImg from "@/assets/run.jpg";
-import communityImg from "@/assets/community.jpg";
+import heroImg from "@/assets/hero.webp";
+import teamImg from "@/assets/about_octri.webp";
+import swimImg from "@/assets/swimming_program.webp";
+import cycleImg from "@/assets/cycling_program.webp";
+import runImg from "@/assets/running_program.webp";
+import communityImg from "@/assets/Organize_your_goals_with_us.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 
@@ -32,7 +32,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <img src={heroImg} alt="Triathlete swimming" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={heroImg} alt="Ocean Triathlon Team athletes training together" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="absolute inset-0 grid-bg opacity-40" />
 
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
-            <img src={teamImg} alt="OCTRI team" loading="lazy" width={1024} height={1024} className="relative rounded-2xl shadow-card w-full" />
+            <img src={teamImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="relative rounded-2xl shadow-card w-full" />
             <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl p-6 shadow-elegant max-w-[200px] hidden md:block">
               <Trophy className="text-primary mb-2" size={28} />
               <div className="font-display text-2xl">Champions</div>
@@ -147,7 +147,7 @@ export default function Home() {
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="relative overflow-hidden rounded-3xl">
-            <img src={communityImg} alt="OCTRI community" loading="lazy" width={1280} height={896} className="absolute inset-0 w-full h-full object-cover" />
+            <img src={communityImg} alt="Ocean Triathlon Team athletes achieving their goals together" loading="lazy" width={1280} height={896} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
             <div className="relative p-10 md:p-20 max-w-2xl">
               <Users className="text-primary mb-4" size={40} />

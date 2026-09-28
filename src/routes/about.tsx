@@ -1,5 +1,5 @@
 import { Trophy, Target, Heart, Zap, Eye, Flag } from "lucide-react";
-import teamImg from "@/assets/team.jpg";
+import aboutImg from "@/assets/about.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { PageHeader } from "@/components/PageHeader";
 import { useDocumentTitle } from "@/hooks/use-document-title";
@@ -35,7 +35,7 @@ export default function About() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-16 items-start">
-          <img src={teamImg} alt="OCTRI team" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full" />
+          <img src={aboutImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full" />
           <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
             <p>
               Established in <span className="text-foreground font-semibold">2017</span>,

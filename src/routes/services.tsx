@@ -1,7 +1,7 @@
 import { Waves, Bike, Activity, Check } from "lucide-react";
-import swimImg from "@/assets/swim.jpg";
-import cycleImg from "@/assets/cycle.jpg";
-import runImg from "@/assets/run.jpg";
+import swimImg from "@/assets/swimming_service.webp";
+import cycleImg from "@/assets/cycling_service.webp";
+import runImg from "@/assets/running_service.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 
