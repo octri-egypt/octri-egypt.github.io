@@ -10,7 +10,7 @@ export default function Contact() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Get In Touch"
-          title={<>Let's <span className="text-gradient">talk.</span></>}
+          title={<>Let's <span className="text-gradient-blue">talk.</span></>}
           description="Questions about programs, schedules, or joining the team? We're here."
         />
 
@@ -48,13 +48,13 @@ export default function Contact() {
               target="_blank" rel="noopener noreferrer"
               className="group flex items-center justify-between p-6 rounded-2xl bg-gradient-primary text-primary-foreground font-bold shadow-elegant hover:shadow-glow transition-smooth"
             >
-              <span className="text-lg">Join Us Today</span>
+              <span className="text-lg"><span className="text-gradient-gold-warm">Join Us</span> Today</span>
               <ArrowRight className="group-hover:translate-x-1 transition-smooth" />
             </a>
           </div>
 
           <form className="p-8 card-glass rounded-2xl space-y-4">
-            <h2 className="font-display text-2xl uppercase mb-4">Send a Message</h2>
+            <h2 className="font-display text-2xl uppercase mb-4"><span className="text-gradient-gold">Send</span> a <span className="text-gradient-blue">Message</span></h2>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Name</label>
               <input type="text" className="mt-2 w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary outline-none transition-smooth" placeholder="Your name" />

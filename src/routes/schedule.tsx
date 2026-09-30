@@ -23,7 +23,7 @@ export default function Schedule() {
             <span className="w-8 h-px bg-primary" /> Weekly Schedule
           </div>
           <h1 className="font-display text-5xl md:text-7xl uppercase">
-            Show up. <span className="text-gradient">Every week.</span>
+            <span className="text-gradient-blue">Show up.</span> <span className="text-gradient-gold">Every week.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
             Consistency wins races. Here's where we'll be — every day of the week.

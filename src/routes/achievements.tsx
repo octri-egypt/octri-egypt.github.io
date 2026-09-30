@@ -30,7 +30,7 @@ export default function Achievements() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Achievements"
-          title={<>Podiums & <span className="text-gradient">milestones.</span></>}
+          title={<><span className="text-gradient-gold">Podiums</span> & <span className="text-gradient-teal">milestones.</span></>}
           description="Some of our team's achievements and milestones over the past couple of years — earned in pools, on the road, and across the finish line."
         />
 
@@ -52,7 +52,7 @@ export default function Achievements() {
         </div>
 
         <div className="mt-20">
-          <SectionHeading center eyebrow="In Training" title="What Drives Us" description="The moments, the mindset, and the team behind every result." />
+          <SectionHeading center eyebrow="In Training" title={<>What <span className="text-gradient-green">Drives Us</span></>} description="The moments, the mindset, and the team behind every result." />
           <div className="flex flex-wrap justify-center gap-2.5">
             {galleryTags.map((t) => (
               <span key={t} className="px-4 py-2 rounded-full border border-border bg-secondary/40 text-sm text-muted-foreground">

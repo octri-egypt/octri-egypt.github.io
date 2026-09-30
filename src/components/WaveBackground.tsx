@@ -69,13 +69,13 @@ export function WaveBackground({ className = "", subtle = false }: WaveBackgroun
           minWidth: 200,
           scale: 1,
           scaleMobile: 1,
-          // Deep ocean water: navy base, electric-blue crests.
-          backgroundColor: 0x0b1a33,
-          color: subtle ? 0x0b356e : 0x0d3f85,
-          waveHeight: subtle ? 12 : 16,
-          waveSpeed: subtle ? 0.55 : 0.7,
+          // Light aqua theme: soft aqua base, turquoise/cyan crests with subtle teal highlights.
+          backgroundColor: 0xe8f5f8,
+          color: subtle ? 0x3dbeb4 : 0x4fd1c5,
+          waveHeight: subtle ? 10 : 14,
+          waveSpeed: subtle ? 0.5 : 0.65,
           zoom: subtle ? 1.05 : 0.95,
-          shininess: 42,
+          shininess: 38,
         });
       } catch {
         // Effect init failed (driver quirks etc.) — keep the CSS fallback.

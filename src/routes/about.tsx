@@ -31,14 +31,14 @@ export default function About() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Who We Are"
-          title={<>Built for those who <span className="text-gradient">refuse to quit.</span></>}
+          title={<>Built for those who <span className="text-gradient-green">refuse to quit.</span></>}
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-16 items-start">
           <img src={aboutImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full max-w-md" />
           <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
             <p>
-              Established in <span className="text-foreground font-semibold">2017</span>,
+              Established in <span className="text-gradient-gold font-semibold">2017</span>,
               Ocean Triathlon Team (OCTRI) focuses on enabling competitive professional
               and amateur athletes. We build your strength, fitness, and agility to be
               able to compete and enjoy being fit and strong.
@@ -46,10 +46,10 @@ export default function About() {
             <p>
               Our athletes compete strongly in all local Triathlon and sports events.
               OCTRI's professionally designed training programs empower you to get over
-              the day-to-day pressures of life and recharge your positive energy.
+              the day-to-day pressures of life and recharge your <span className="text-gradient-green">positive energy</span>.
             </p>
             <p className="text-foreground font-medium">
-              Get outdoors and join us to build a strong YOU.
+              Get outdoors and join us to build a <span className="text-gradient-blue">strong YOU</span>.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function About() {
         </div>
 
         <div className="mt-24">
-          <SectionHeading center eyebrow="What We Stand For" title="Our Values" />
+          <SectionHeading center eyebrow="What We Stand For" title={<>Our <span className="text-gradient-gold">Values</span></>} />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
               <div key={v.title} className="p-6 card-glass rounded-2xl hover:border-primary/50">

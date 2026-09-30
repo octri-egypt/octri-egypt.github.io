@@ -52,8 +52,8 @@ export default function Offers() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Training Offers"
-          title={<>Train with <span className="text-gradient">OCTRI.</span></>}
-          description="Flexible on-site and online training plans. Pick a single discipline or the full triathlon — Swim, Bike, Run, Fitness, and Nutrition."
+          title={<>Train with <span className="text-gradient-gold">OCTRI.</span></>}
+          description='Flexible on-site and online training plans. Pick a single discipline or the full triathlon — <span className="text-gradient-blue">Swim</span>, <span className="text-gradient-teal">Bike</span>, <span className="text-gradient-green">Run</span>, Fitness, and Nutrition.'
         />
 
         <div className="mt-16 grid lg:grid-cols-2 gap-6">
@@ -71,7 +71,7 @@ export default function Offers() {
         </div>
 
         <div className="mt-16">
-          <SectionHeading center title="Ready to Start?" description="Subscribe to check your offer and join Egypt's strongest triathlon community." />
+          <SectionHeading center title={<>Ready to <span className="text-gradient-green">Start?</span></>} description="Subscribe to check your offer and join Egypt's strongest triathlon community." />
           <div className="flex justify-center">
             <a
               href={JOIN_FORM}

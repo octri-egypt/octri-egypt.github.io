@@ -44,8 +44,8 @@ export default function Home() {
                 Egypt · Since 2017
               </div>
               <h1 className="font-display text-6xl md:text-8xl uppercase leading-[0.95]">
-                Together <br />
-                <span className="text-gradient">We Tri.</span>
+                <span className="text-gradient-blue">Together</span> <br />
+                <span className="text-gradient-teal">We Tri.</span>
               </h1>
               <p className="mt-6 text-lg md:text-xl text-foreground/90 max-w-xl">
                 Ocean Triathlon Team — where swimmers, cyclists, and runners come together
@@ -68,7 +68,7 @@ export default function Home() {
               <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl">
                 {stats.map((s) => (
                   <div key={s.label} className="border-l-2 border-primary/70 pl-4">
-                    <div className="font-display text-3xl md:text-4xl text-foreground">{s.value}</div>
+                    <div className="font-display text-3xl md:text-4xl text-gradient-gold">{s.value}</div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{s.label}</div>
                   </div>
                 ))}
@@ -179,7 +179,7 @@ export default function Home() {
               <div>
                 <Users className="text-primary mb-4" size={40} />
                 <h2 className="font-display text-4xl md:text-6xl uppercase">
-                  Organize your goals <span className="text-gradient">with us.</span>
+                  Organize your <span className="text-gradient-green">goals</span> <span className="text-gradient-gold">with us.</span>
                 </h2>
                 <p className="mt-5 text-lg text-muted-foreground">
                   Whether you're chasing your first finish line or your next podium —

@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 interface Props {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   center?: boolean;
 }

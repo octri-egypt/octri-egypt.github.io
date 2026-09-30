@@ -37,7 +37,7 @@ export default function Services() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Programs"
-          title={<>Train smarter. <span className="text-gradient">Race stronger.</span></>}
+          title={<><span className="text-gradient-blue">Train smarter.</span> <span className="text-gradient-gold">Race stronger.</span></>}
           description="Triathlon Team (Swim · Bike · Run). Pick a single discipline or train the full triathlon."
         />
 
@@ -70,7 +70,7 @@ export default function Services() {
         </div>
 
         <div className="mt-20 text-center">
-          <SectionHeading center title="Ready to Begin?" description="Sign up today and join Egypt's strongest triathlon community." />
+          <SectionHeading center title={<>Ready to <span className="text-gradient-green">Begin?</span></>} description="Sign up today and join Egypt's strongest triathlon community." />
           <a
             href={JOIN_FORM}
             target="_blank" rel="noopener noreferrer"

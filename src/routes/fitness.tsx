@@ -36,8 +36,8 @@ export default function Fitness() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Fitness"
-          title={<>Train every <span className="text-gradient">angle.</span></>}
-          description="Focused fitness tracks that complement your swim, bike, and run — from strength and mobility to full triathlon conditioning."
+          title={<>Train every <span className="text-gradient-green">angle.</span></>}
+          description='Focused fitness tracks that complement your <span className="text-gradient-blue">swim</span>, <span className="text-gradient-teal">bike</span>, and <span className="text-gradient-green">run</span> — from strength and mobility to full triathlon conditioning.'
         />
 
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -67,7 +67,7 @@ export default function Fitness() {
         </div>
 
         <div className="mt-16">
-          <SectionHeading center title="Want the Details?" description="Click join to check the full program details and start training." />
+          <SectionHeading center title={<>Want the <span className="text-gradient-gold">Details?</span></>} description="Click join to check the full program details and start training." />
           <div className="flex justify-center">
             <a
               href={JOIN_FORM}

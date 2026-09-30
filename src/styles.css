@@ -30,6 +30,8 @@
   --color-ring: var(--ring);
   --color-cyan: var(--cyan);
   --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-teal: var(--teal);
   --font-display: "Oswald", "Inter", sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -37,42 +39,48 @@
 :root {
   --radius: 0.75rem;
 
-  /* Deep ocean base — tuned to sit just under the Vanta wave navy (0x0b1a33) */
-  --background: oklch(0.145 0.05 252);
-  --foreground: oklch(0.97 0.01 235);
+  /* Light turquoise / aqua base — clean, bright, athletic */
+  --background: oklch(0.965 0.025 195);
+  --foreground: oklch(0.18 0.03 220);
 
-  /* Surfaces */
-  --card: oklch(0.19 0.055 250 / 0.72);
-  --card-foreground: oklch(0.97 0.01 235);
-  --popover: oklch(0.18 0.055 250);
-  --popover-foreground: oklch(0.97 0.01 235);
+  /* Surfaces — white/near-white with subtle aqua tint for depth */
+  --card: oklch(1 0 0 / 0.9);
+  --card-foreground: oklch(0.18 0.03 220);
+  --popover: oklch(1 0 0 / 0.95);
+  --popover-foreground: oklch(0.18 0.03 220);
 
-  /* Accents: electric blue + cyan highlight */
-  --primary: oklch(0.68 0.19 240);
-  --primary-foreground: oklch(0.12 0.04 252);
-  --cyan: oklch(0.8 0.14 210);
-  --navy: oklch(0.16 0.05 252);
-  --secondary: oklch(0.25 0.07 248);
-  --secondary-foreground: oklch(0.97 0.01 235);
-  --muted: oklch(0.23 0.05 250);
-  --muted-foreground: oklch(0.74 0.035 240);
-  --accent: oklch(0.6 0.2 252);
-  --accent-foreground: oklch(0.97 0.01 235);
-  --destructive: oklch(0.6 0.24 27);
+  /* Accents: primary = medium blue, gold = premium emphasis, teal = emerald green */
+  --primary: oklch(0.52 0.18 200);
+  --primary-foreground: oklch(0.98 0.01 200);
+  --gold: oklch(0.62 0.16 85);
+  --gold-foreground: oklch(0.98 0.01 85);
+  --teal: oklch(0.48 0.14 165);
+  --cyan: oklch(0.72 0.12 190);
+  --navy: oklch(0.92 0.02 200);
+  --secondary: oklch(0.93 0.025 195);
+  --secondary-foreground: oklch(0.25 0.03 210);
+  --muted: oklch(0.9 0.02 195);
+  --muted-foreground: oklch(0.45 0.025 210);
+  --accent: oklch(0.48 0.14 165);
+  --accent-foreground: oklch(0.98 0.01 165);
+  --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0.01 240);
-  --border: oklch(0.6 0.14 235 / 0.22);
-  --input: oklch(0.2 0.05 250);
-  --ring: oklch(0.68 0.19 240);
+  --border: oklch(0.75 0.08 190 / 0.35);
+  --input: oklch(0.95 0.02 195);
+  --ring: oklch(0.52 0.18 200);
 
-  /* Selective gradients */
-  --gradient-hero: linear-gradient(160deg, oklch(0.12 0.045 252) 0%, oklch(0.16 0.075 246) 45%, oklch(0.24 0.11 238) 100%);
-  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.2 248), oklch(0.72 0.15 218));
-  --gradient-overlay: linear-gradient(180deg, oklch(0.1 0.045 252 / 0.55) 0%, oklch(0.1 0.045 252 / 0.35) 40%, oklch(0.1 0.045 252 / 0.92) 100%);
+  /* Gradients — light theme with turquoise/blue/gold/green accents */
+  --gradient-hero: linear-gradient(160deg, oklch(0.98 0.015 200) 0%, oklch(0.94 0.035 195) 45%, oklch(0.89 0.055 190) 100%);
+  --gradient-primary: linear-gradient(135deg, oklch(0.52 0.18 200), oklch(0.48 0.14 165));
+  --gradient-gold: linear-gradient(135deg, oklch(0.62 0.16 85), oklch(0.72 0.14 90));
+  --gradient-teal: linear-gradient(135deg, oklch(0.48 0.14 165), oklch(0.58 0.12 160));
+  --gradient-overlay: linear-gradient(180deg, oklch(0.96 0.025 195 / 0.6) 0%, oklch(0.96 0.025 195 / 0.3) 40%, oklch(0.96 0.025 195 / 0.9) 100%);
   --gradient-fade: linear-gradient(180deg, transparent 0%, var(--background) 100%);
 
-  --shadow-glow: 0 0 50px oklch(0.68 0.19 240 / 0.35);
-  --shadow-card: 0 16px 40px -18px oklch(0.05 0.03 252 / 0.8);
-  --shadow-elegant: 0 8px 24px -8px oklch(0.68 0.19 240 / 0.35);
+  --shadow-glow: 0 0 40px oklch(0.52 0.18 200 / 0.25);
+  --shadow-glow-gold: 0 0 35px oklch(0.62 0.16 85 / 0.2);
+  --shadow-card: 0 12px 32px -12px oklch(0.3 0.05 200 / 0.25);
+  --shadow-elegant: 0 6px 20px -6px oklch(0.52 0.18 200 / 0.2);
 
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -82,8 +90,8 @@
   html { scroll-behavior: smooth; overflow-x: clip; }
   body {
     background:
-      radial-gradient(60rem 40rem at 85% -10%, oklch(0.35 0.12 240 / 0.22), transparent 60%),
-      radial-gradient(50rem 36rem at -10% 30%, oklch(0.3 0.1 250 / 0.16), transparent 60%),
+      radial-gradient(60rem 40rem at 85% -10%, oklch(0.75 0.12 190 / 0.15), transparent 60%),
+      radial-gradient(50rem 36rem at -10% 30%, oklch(0.7 0.1 195 / 0.12), transparent 60%),
       var(--color-background);
     background-attachment: fixed;
     color: var(--color-foreground);
@@ -99,36 +107,74 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
-  ::selection { background: oklch(0.68 0.19 240 / 0.4); }
+  ::selection { background: oklch(0.52 0.18 200 / 0.3); }
 }
 
 @layer utilities {
   .bg-gradient-hero { background: var(--gradient-hero); }
   .bg-gradient-primary { background: var(--gradient-primary); }
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .bg-gradient-teal { background: var(--gradient-teal); }
   .bg-gradient-overlay { background: var(--gradient-overlay); }
   .bg-gradient-fade { background: var(--gradient-fade); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-glow-gold { box-shadow: var(--shadow-glow-gold); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .transition-smooth { transition: var(--transition-smooth); }
+
+  /* Text gradients — for strategic word emphasis */
   .text-gradient {
-    background: linear-gradient(100deg, oklch(0.72 0.17 235), oklch(0.82 0.13 205));
+    background: linear-gradient(100deg, oklch(0.52 0.18 200), oklch(0.48 0.14 165));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(100deg, oklch(0.62 0.16 85), oklch(0.72 0.14 90));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-teal {
+    background: linear-gradient(100deg, oklch(0.48 0.14 165), oklch(0.58 0.12 160), oklch(0.72 0.12 190));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-blue {
+    background: linear-gradient(100deg, oklch(0.52 0.18 200), oklch(0.65 0.14 195), oklch(0.72 0.12 190));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-green {
+    background: linear-gradient(100deg, oklch(0.48 0.14 165), oklch(0.55 0.13 158), oklch(0.62 0.12 155));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-gold-warm {
+    background: linear-gradient(100deg, oklch(0.62 0.16 85), oklch(0.7 0.14 80), oklch(0.78 0.12 75));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .text-cyan { color: var(--cyan); }
+  .text-gold { color: var(--gold); }
+  .text-teal { color: var(--teal); }
+  .text-blue { color: var(--primary); }
 
-  /* Technical grid texture */
+  /* Technical grid texture — subtle on light */
   .grid-bg {
     background-image:
-      linear-gradient(oklch(0.7 0.15 235 / 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.7 0.15 235 / 0.06) 1px, transparent 1px);
+      linear-gradient(oklch(0.55 0.12 190 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.55 0.12 190 / 0.05) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 40%, transparent 100%);
   }
 
-  /* Compact premium glass card */
+  /* Compact premium glass card — light surfaces */
   .card-glass {
     background: var(--card);
     border: 1px solid var(--border);
@@ -138,35 +184,38 @@
     transition: var(--transition-smooth);
   }
   .card-glass:hover {
-    border-color: oklch(0.72 0.15 225 / 0.55);
-    box-shadow: var(--shadow-card), 0 0 28px oklch(0.68 0.19 240 / 0.18);
+    border-color: oklch(0.55 0.14 190 / 0.55);
+    box-shadow: var(--shadow-card), 0 0 24px oklch(0.52 0.18 190 / 0.15);
     transform: translateY(-3px);
   }
 
-  /* Static ocean backdrop for inner pages (no WebGL) */
+  /* Static ocean backdrop for inner pages (no WebGL) — light aqua */
   .page-hero {
     background:
-      radial-gradient(40rem 22rem at 75% 0%, oklch(0.35 0.13 240 / 0.28), transparent 65%),
-      radial-gradient(30rem 18rem at 10% 20%, oklch(0.3 0.1 250 / 0.2), transparent 60%),
+      radial-gradient(40rem 22rem at 75% 0%, oklch(0.78 0.1 190 / 0.2), transparent 65%),
+      radial-gradient(30rem 18rem at 10% 20%, oklch(0.72 0.08 195 / 0.15), transparent 60%),
       var(--gradient-hero);
   }
 
-  /* Wave background host — static ocean gradient paints instantly, then the
-   Vanta canvas (or this same gradient if WebGL/reduced-motion fallback) sits on top. */
-.wave-bg {
-  background:
-    radial-gradient(110% 80% at 50% -10%, oklch(0.3 0.11 242 / 0.9), transparent 70%),
-    linear-gradient(180deg, oklch(0.2 0.085 246) 0%, var(--color-background) 100%);
-}
-.wave-bg canvas { display: block; }
+  /* Wave background host — static light aqua gradient paints instantly */
+  .wave-bg {
+    background:
+      radial-gradient(110% 80% at 50% -10%, oklch(0.85 0.08 192 / 0.7), transparent 70%),
+      linear-gradient(180deg, oklch(0.92 0.04 195) 0%, var(--color-background) 100%);
+  }
+  .wave-bg canvas { display: block; }
 
-/* Hairline accent bar used on eyebrows / dividers */
+  /* Hairline accent bar used on eyebrows / dividers — blue + gold */
   .accent-bar {
-    background: linear-gradient(90deg, oklch(0.68 0.19 240), oklch(0.8 0.14 210));
+    background: linear-gradient(90deg, oklch(0.52 0.18 200), oklch(0.62 0.16 85));
+  }
+
+  /* Gold accent underline for special headings */
+  .accent-bar-gold {
+    background: linear-gradient(90deg, oklch(0.62 0.16 85), oklch(0.72 0.14 90));
   }
 }
 
-/* --- Scroll reveal --- */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -197,7 +246,7 @@
   100% { background-position: 200% 0; }
 }
 .animate-shimmer {
-  background: linear-gradient(100deg, transparent 40%, oklch(0.85 0.12 210 / 0.25) 50%, transparent 60%);
+  background: linear-gradient(100deg, transparent 40%, oklch(0.62 0.16 85 / 0.15) 50%, transparent 60%);
   background-size: 200% 100%;
   animation: shimmer 3.5s linear infinite;
 }

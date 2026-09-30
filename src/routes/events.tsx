@@ -43,7 +43,7 @@ export default function Events() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Events"
-          title={<>Show up. <span className="text-gradient">Race on.</span></>}
+          title={<><span className="text-gradient-blue">Show up.</span> <span className="text-gradient-gold">Race on.</span></>}
           description="From endurance festivals to free community sessions — here's where OCTRI trains, races, and celebrates."
         />
 
@@ -72,7 +72,7 @@ export default function Events() {
         </div>
 
         <div className="mt-16">
-          <SectionHeading center title="Join the Next One" description="Never miss a session — join OCTRI and train with the team." />
+          <SectionHeading center title={<>Join the <span className="text-gradient-green">Next One</span></>} description="Never miss a session — join OCTRI and train with the team." />
           <div className="flex justify-center">
             <a
               href={JOIN_FORM}

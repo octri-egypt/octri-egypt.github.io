@@ -82,7 +82,7 @@ export default function Partners() {
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Our Partners"
-          title={<>Stronger <span className="text-gradient">together.</span></>}
+          title={<><span className="text-gradient-blue">Stronger</span> <span className="text-gradient-gold">together.</span></>}
           description="The brands and academy that power Ocean Triathlon Team — on the road, in the water, and across every finish line."
         />
 
@@ -116,7 +116,7 @@ export default function Partners() {
         </div>
 
         <div className="mt-16">
-          <SectionHeading center title="Join the Team" description="Become part of OCTRI and train with our partners' support." />
+          <SectionHeading center title={<>Join the <span className="text-gradient-green">Team</span></>} description="Become part of OCTRI and train with our partners' support." />
           <div className="flex justify-center">
             <a
               href={JOIN_FORM}
