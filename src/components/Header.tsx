@@ -111,7 +111,7 @@ export function Header() {
                 </button>
                 {openMenu === item.label && (
                   <div className="absolute top-full left-0 pt-2 min-w-[200px]">
-                    <div className="rounded-xl bg-card border border-border shadow-card p-2">
+                    <div className="rounded-xl card-glass p-2">
                       {item.children.map((c) => (
                         <Link
                           key={c.to}
@@ -134,7 +134,7 @@ export function Header() {
                 end={"end" in item ? item.end : false}
                 className={({ isActive }) =>
                   isActive
-                    ? "px-4 py-2 text-sm font-medium text-primary transition-smooth"
+                    ? "relative px-4 py-2 text-sm font-medium text-primary transition-smooth after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:rounded-full after:bg-gradient-primary"
                     : "px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
                 }
               >

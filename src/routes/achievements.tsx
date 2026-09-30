@@ -36,7 +36,7 @@ export default function Achievements() {
 
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {achievements.map((a, i) => (
-            <article key={i} className="group p-6 rounded-2xl bg-card border border-border shadow-card hover:border-primary/50 hover:-translate-y-1 transition-smooth">
+            <article key={i} className="group p-6 card-glass rounded-2xl hover:border-primary/50">
               <div className="flex items-center justify-between mb-4">
                 <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center">
                   {i < 3 ? <Trophy className="text-primary-foreground" size={20} /> : <Medal className="text-primary-foreground" size={20} />}

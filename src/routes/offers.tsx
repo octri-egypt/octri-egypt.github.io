@@ -23,7 +23,7 @@ const addons = [
 
 function PriceCard({ title, icon: Icon, rows, badge }: { title: string; icon: typeof MapPin; rows: Row[]; badge: string }) {
   return (
-    <div className="rounded-2xl bg-card border border-border shadow-card overflow-hidden">
+    <div className="card-glass rounded-2xl overflow-hidden">
       <div className="p-6 border-b border-border flex items-center gap-3">
         <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center">
           <Icon className="text-primary-foreground" size={20} />

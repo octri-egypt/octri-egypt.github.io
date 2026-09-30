@@ -87,6 +87,33 @@ npm run lint
 - Images are full-resolution JPEG/PNG; convert to AVIF/WebP + `srcset` for better Lighthouse scores.
 - `public/favicon.svg` must have inline `fill="#ffffff"` on the `<path>` element and no `<style>`/`@media (prefers-color-scheme)` blocks. SVGs used as `<img>` sources don't apply internal CSS stylesheets on Android browsers, causing the logo to render dimly — always hardcode fill colors for cross-platform consistency.
 
+## Vanta WAVES Redesign (2026-09-30, uncommitted → committed same day)
+
+Site-wide visual overhaul into a premium blue sports-performance theme with the real
+Vanta WAVES animation (three.js **r121** — `three@0.121.1` is pinned because Vanta's
+waves plugin requires the old three.js API; do not upgrade three blindly).
+
+- **`src/components/WaveBackground.tsx`** — Vanta WAVES host. Static `.wave-bg` ocean
+  gradient paints instantly, then the canvas initializes on top. Destroyed/re-inited via
+  IntersectionObserver when offscreen (performance). `subtle` prop variant for inner-page
+  headers/footer. Respects `prefers-reduced-motion: reduce` (static fallback only) and
+  WebGL unavailability.
+- **Waves are site-wide**, not just the homepage hero: homepage hero + inner-page
+  `PageHeader` + Footer all host the animation.
+- **`src/components/PageHeader.tsx`** — inner-page hero. The wave band is full-bleed via
+  the **50vw trick** (`left-1/2 -translate-x-1/2 w-screen`) and masked toward the bottom
+  (`linear-gradient(180deg, black 55%, transparent 100%)`). **Gotcha:** the 50vw trick
+  requires the positioning parent to be centered on the viewport — the band must hang off
+  a full-width `relative` wrapper, NOT a left-aligned `max-w-3xl` one (that was the
+  desktop full-width bug). Text stays in an inner `relative max-w-3xl`.
+- **`src/styles.css`** — theme tokens retuned to the Vanta navy (`--background: oklch(0.145 0.05 252)`),
+  glass cards, `.wave-bg`/`.page-hero` gradients, reveal animations. `html` has
+  `overflow-x: clip` — required because `w-screen` (100vw) includes the Windows scrollbar
+  width and would otherwise cause a horizontal scrollbar. Safe: the Header is `fixed`,
+  not `sticky` (clip breaks sticky positioning).
+- Smaller photo cards across pages (services `max-w-lg`, about `max-w-md`, 16/9 fitness cards).
+- Fonts: Oswald display + Inter body via `--font-display`/`--font-sans` tokens.
+
 ## Recent Image Updates (2026-09-28)
 
 ### Homepage (`src/routes/index.tsx`)

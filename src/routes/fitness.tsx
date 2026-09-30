@@ -42,10 +42,10 @@ export default function Fitness() {
 
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {focusAreas.map((f) => (
-            <article key={f.name} className="group relative overflow-hidden rounded-2xl bg-card border border-border shadow-card hover:border-primary/50 hover:-translate-y-1 transition-smooth">
+            <article key={f.name} className="group relative overflow-hidden card-glass rounded-2xl hover:border-primary/50">
               {f.img ? (
                 <>
-                  <div className="aspect-[16/10] overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden">
                     <img src={f.img} alt={f.name} loading="lazy" width={1280} height={800} className="w-full h-full object-cover group-hover:scale-105 transition-smooth duration-700" />
                   </div>
                   <div className="p-6">

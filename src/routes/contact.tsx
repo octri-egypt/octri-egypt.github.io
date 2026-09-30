@@ -23,7 +23,7 @@ export default function Contact() {
               { icon: MessageCircle, label: "WhatsApp", value: "Message us on WhatsApp", href: SOCIAL.whatsapp },
             ].map((c) => {
               const inner = (
-                <div className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border">
+                <div className="flex items-start gap-4 p-6 card-glass rounded-2xl">
                   <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
                     <c.icon className="text-primary-foreground" size={20} />
                   </div>
@@ -53,7 +53,7 @@ export default function Contact() {
             </a>
           </div>
 
-          <form className="p-8 rounded-2xl bg-card border border-border space-y-4">
+          <form className="p-8 card-glass rounded-2xl space-y-4">
             <h2 className="font-display text-2xl uppercase mb-4">Send a Message</h2>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Name</label>

@@ -35,7 +35,7 @@ export default function About() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-16 items-start">
-          <img src={aboutImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full" />
+          <img src={aboutImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full max-w-md" />
           <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
             <p>
               Established in <span className="text-foreground font-semibold">2017</span>,
@@ -56,7 +56,7 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 gap-6 mt-16">
           {principles.map((p) => (
-            <div key={p.title} className="p-7 rounded-2xl bg-card border border-border shadow-card">
+            <div key={p.title} className="p-7 card-glass rounded-2xl">
               <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
                 <p.icon className="text-primary-foreground" size={22} />
               </div>
@@ -70,7 +70,7 @@ export default function About() {
           <SectionHeading center eyebrow="What We Stand For" title="Our Values" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:-translate-y-1 transition-smooth">
+              <div key={v.title} className="p-6 card-glass rounded-2xl hover:border-primary/50">
                 <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
                   <v.icon className="text-primary-foreground" size={22} />
                 </div>

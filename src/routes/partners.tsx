@@ -88,7 +88,7 @@ export default function Partners() {
 
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {partners.map((p) => (
-            <article key={p.name} className="p-7 rounded-2xl bg-card border border-border shadow-card hover:border-primary/50 hover:-translate-y-1 transition-smooth">
+            <article key={p.name} className="p-7 card-glass rounded-2xl hover:border-primary/50">
               <h3 className="font-display text-2xl uppercase">{p.name}</h3>
               <p className="text-primary text-sm font-semibold mt-1">{p.tagline}</p>
               <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{p.desc}</p>

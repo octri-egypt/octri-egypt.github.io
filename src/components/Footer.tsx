@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Linkedin, Mail, MapPin, Phone, Map, ArrowRight } from "lucide-react";
 import { SOCIAL, CONTACT, JOIN_FORM } from "@/lib/constants";
+import { WaveBackground } from "@/components/WaveBackground";
 
 interface TikTokProps {
   size?: number;
@@ -26,8 +27,18 @@ const MAPS_URL = "https://maps.app.goo.gl/97daZ8knbEExrAtJ6";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card/40 mt-24">
-      <div className="container mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
+    <footer className="relative mt-24">
+      {/* Wave crest separating page from footer */}
+      <svg viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" className="w-full h-12 block text-navy -mb-px">
+        <path
+          fill="currentColor"
+          d="M0 28 C 120 8 240 48 360 34 C 480 20 600 2 720 18 C 840 34 960 52 1080 40 C 1200 28 1320 10 1440 24 L 1440 56 L 0 56 Z"
+        />
+      </svg>
+      <div className="relative bg-navy border-t border-border/50 overflow-hidden">
+        <WaveBackground subtle className="absolute inset-0 opacity-60" />
+        <div className="absolute top-0 inset-x-0 h-px accent-bar opacity-70" />
+        <div className="relative container mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <img src="/favicon.svg" alt="" width={40} height={40} className="w-10 h-10" />
@@ -88,9 +99,10 @@ export function Footer() {
             <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth"><Linkedin size={18} /></a>
           </div>
         </div>
-      </div>
-      <div className="border-t border-border py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Ocean Triathlon Team. All rights reserved.
+        </div>
+        <div className="relative border-t border-border/50 py-6 text-center text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Ocean Triathlon Team. All rights reserved.
+        </div>
       </div>
     </footer>
   );

@@ -32,7 +32,7 @@ export default function Schedule() {
 
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {days.map((d) => (
-            <div key={d} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-smooth">
+            <div key={d} className="p-6 card-glass rounded-2xl">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-display text-2xl uppercase">{d}</h3>
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">Day</div>

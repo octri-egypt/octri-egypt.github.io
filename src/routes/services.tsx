@@ -3,6 +3,7 @@ import swimImg from "@/assets/swimming_service.webp";
 import cycleImg from "@/assets/cycling_service.webp";
 import runImg from "@/assets/running_service.webp";
 import { SectionHeading } from "@/components/SectionHeading";
+import { PageHeader } from "@/components/PageHeader";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 
 const JOIN_FORM =
@@ -34,22 +35,16 @@ export default function Services() {
   return (
     <div className="pt-32 pb-16">
       <section className="container mx-auto px-6">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">
-            <span className="w-8 h-px bg-primary" /> Programs
-          </div>
-          <h1 className="font-display text-5xl md:text-7xl uppercase">
-            Train smarter. <span className="text-gradient">Race stronger.</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground">
-            Triathlon Team (Swim · Bike · Run). Pick a single discipline or train the full triathlon.
-          </p>
-        </div>
+        <PageHeader
+          eyebrow="Programs"
+          title={<>Train smarter. <span className="text-gradient">Race stronger.</span></>}
+          description="Triathlon Team (Swim · Bike · Run). Pick a single discipline or train the full triathlon."
+        />
 
         <div className="mt-16 space-y-8">
           {services.map((s, i) => (
             <article key={s.title} className={`grid lg:grid-cols-2 gap-8 items-center ${i % 2 ? "lg:[&>div:first-child]:order-2" : ""}`}>
-              <div className="relative overflow-hidden rounded-2xl shadow-card group">
+              <div className="relative overflow-hidden rounded-2xl shadow-card group max-w-lg w-full">
                 <img src={s.img} alt={s.title} loading="lazy" width={1280} height={896} className="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-smooth duration-700" />
                 <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-elegant">
                   <s.icon className="text-primary-foreground" size={22} />

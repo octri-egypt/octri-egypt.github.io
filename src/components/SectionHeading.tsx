@@ -9,7 +9,7 @@ export function SectionHeading({ eyebrow, title, description, center }: Props) {
     <div className={`max-w-2xl ${center ? "mx-auto text-center" : ""} mb-12`}>
       {eyebrow && (
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">
-          <span className="w-8 h-px bg-primary" />
+          <span className="w-8 h-px accent-bar" />
           {eyebrow}
         </div>
       )}

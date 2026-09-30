@@ -49,7 +49,7 @@ export default function Events() {
 
         <div className="mt-16 space-y-6">
           {events.map((e, i) => (
-            <article key={i} className="grid md:grid-cols-4 gap-6 p-7 rounded-2xl bg-card border border-border shadow-card hover:border-primary/50 transition-smooth">
+            <article key={i} className="grid md:grid-cols-4 gap-6 p-7 card-glass rounded-2xl hover:border-primary/50 transition-smooth">
               <div className="md:col-span-1">
                 <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
                   {i === 0 ? <Waves className="text-primary-foreground" size={22} /> : <PartyPopper className="text-primary-foreground" size={22} />}
