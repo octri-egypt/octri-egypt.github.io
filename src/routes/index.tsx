@@ -49,7 +49,7 @@ export default function Home() {
               </h1>
               <p className="mt-6 text-lg md:text-xl text-foreground/90 max-w-xl">
                 Ocean Triathlon Team — where swimmers, cyclists, and runners come together
-                to train, compete, and become unstoppable.
+                to train, compete, and become <span className="text-green font-semibold">unstoppable</span>.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
@@ -179,7 +179,7 @@ export default function Home() {
               <div>
                 <Users className="text-primary mb-4" size={40} />
                 <h2 className="font-display text-4xl md:text-6xl uppercase">
-                  Organize your goals <span className="text-gradient">with us.</span>
+                  Organize your <span className="text-gold">goals</span> <span className="text-gradient">with us.</span>
                 </h2>
                 <p className="mt-5 text-lg text-muted-foreground">
                   Whether you're chasing your first finish line or your next podium —

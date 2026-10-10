@@ -38,10 +38,10 @@ export default function Achievements() {
           {achievements.map((a, i) => (
             <article key={i} className="group p-6 card-glass rounded-2xl hover:border-primary/50">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center">
-                  {i < 3 ? <Trophy className="text-primary-foreground" size={20} /> : <Medal className="text-primary-foreground" size={20} />}
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${i < 3 ? "bg-gold/90" : "bg-gradient-primary"}`}>
+                  {i < 3 ? <Trophy className="text-gold-foreground" size={20} /> : <Medal className="text-primary-foreground" size={20} />}
                 </div>
-                <span className="text-xs uppercase tracking-widest text-primary font-semibold">{a.year}</span>
+                <span className="text-xs uppercase tracking-widest text-gold font-semibold">{a.year}</span>
               </div>
               <h3 className="font-display text-xl uppercase leading-tight">{a.title}</h3>
               <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary border border-border text-xs text-muted-foreground">

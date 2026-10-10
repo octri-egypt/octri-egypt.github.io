@@ -49,7 +49,7 @@ export default function About() {
               the day-to-day pressures of life and recharge your positive energy.
             </p>
             <p className="text-foreground font-medium">
-              Get outdoors and join us to build a strong YOU.
+              Get outdoors and join us to build a <span className="text-green font-semibold">strong YOU</span>.
             </p>
           </div>
         </div>

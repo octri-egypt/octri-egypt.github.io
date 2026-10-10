@@ -64,7 +64,7 @@ export default function Offers() {
         <div className="mt-10 grid md:grid-cols-3 gap-4">
           {addons.map((a) => (
             <div key={a} className="flex items-start gap-3 p-5 rounded-2xl bg-secondary/50 border border-border">
-              <Check size={18} className="text-primary flex-shrink-0 mt-0.5" />
+              <Check size={18} className="text-green flex-shrink-0 mt-0.5" />
               <span className="text-sm text-foreground">{a}</span>
             </div>
           ))}
