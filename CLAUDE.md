@@ -205,3 +205,76 @@ npm run preview                     # Test PWA locally (serves dist/)
 - **Install button not appearing**: Chrome requires ~30s engagement; banner waits for `beforeinstallprompt`
 - **Windows shows white icon**: Uninstall/reinstall; Windows caches icons at install
 - **iOS no native prompt**: Expected; shows instructional modal instead
+
+## Cache Invalidation Strategy (Added 2026-10-11)
+
+### Problem Solved
+Users previously needed to manually clear browser cache/website data to see new deployments. Now updates are detected automatically.
+
+### Root Causes Fixed
+1. **No SW update notification** — `sw-update-available` event dispatched but never consumed
+2. **Duplicate SW registration** — Both vite-plugin-pwa and main.tsx registered SW
+3. **No deployment detection** — Open tabs couldn't detect new builds
+4. **GitHub Pages header limitations** — Cannot configure custom Cache-Control headers
+
+### New Components
+| Component | Purpose |
+|-----------|---------|
+| `src/components/SWUpdateToast.tsx` | Shows when new SW installed (listens for `sw-update-available`) |
+| `src/components/VersionUpdateToast.tsx` | Shows when new deployment detected via `version.json` polling |
+| `src/hooks/use-version-check.ts` | Polls `/version.json` every 5min + on tab focus, compares `buildId` |
+| `scripts/generate-version.js` | Build-time script generating `version.json` with unique `buildId` |
+
+### Configuration Changes
+- **`vite.config.ts`** — `injectRegister: false` to disable duplicate SW registration script
+- **`package.json`** — Added `generate-version` to build scripts (pre-build + post-build)
+- **`src/App.tsx`** — Added both toast components
+
+### Cache Strategy by Resource Type
+
+| Resource | Strategy |
+|----------|----------|
+| HTML (`index.html`) | SW `NavigationRoute` with `NetworkFirst` for `/`; precached with revision |
+| JS/CSS bundles | Content-hashed filenames (e.g., `index-CdxQUej-.js`) — immutable caching |
+| Static assets (images/fonts) | Content-hashed + SW precache with revision |
+| PWA icons | Stable filenames in `public/icons/` + SW precache revision |
+| Google Fonts | `CacheFirst`, 1 year |
+| Google APIs | `StaleWhileRevalidate`, 30 days |
+| Version manifest | Fetched with `cache: "no-store"` + timestamp query param |
+
+### Service Worker Details
+- **Single registration** in `main.tsx` (disabled vite-plugin-pwa injection)
+- **Update detection**: Hourly `registration.update()` + `updatefound` event → `sw-update-available`
+- **Fallback**: `controllerchange` event listener
+- **Precaching**: 44-45 entries via Workbox `generateSW`
+- **Cleanup**: `cleanupOutdatedCaches: true` removes old caches on activation
+- **SPA Navigation**: `NavigationRoute` serves precached `index.html` (200) for all routes
+
+### Version Checking (New)
+- **`version.json`** generated at build with: `buildId`, `gitCommit`, `buildTime`, `version`
+- **Polling**: 5-minute interval + `visibilitychange` event (tab focus)
+- **Comparison**: Client stores initial `buildId` in localStorage; compares on each check
+- **Notification**: Toast appears when `buildId` differs with "Reload Now" button
+
+### GitHub Pages Limitations Handled
+- No custom headers → SW precaching + content-hashed filenames
+- `/` returns 404 → SW `NavigationRoute` serves `index.html` (200)
+- Deep links return 404 → Same `NavigationRoute` handles all routes
+- Deployment timing uncertainty → Version checker polls `version.json` to detect live deployment
+
+### Testing Verified
+- ✅ Production build successful (1783 modules, 44-45 precached entries)
+- ✅ All SPA routes work via SW NavigationRoute
+- ✅ `version.json` accessible with unique `buildId` per build
+- ✅ Service worker registers and handles navigation correctly
+- ✅ No duplicate registration scripts
+- ✅ Preview server tested with clean console
+
+### Remaining Limitations
+1. **PWA icons** — Stable filenames; users with installed PWA see old icons until reinstall
+2. **GitHub Pages propagation** — 1-5 min delay; version checker may detect before all assets live
+3. **User dismisses toast** — Re-notifies on next poll (5 min) or tab focus
+4. **Offline-first** — New deployments require network to detect
+
+### Deployment
+Push to `main` branch → GitHub Actions builds + deploys. Users with cached versions auto-notified via toasts. **No manual cache clearing ever required.**

@@ -4,6 +4,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { StructuredData } from "./components/StructuredData";
 import { PWAInstallBanner } from "./components/PWAInstallBanner";
+import { SWUpdateToast } from "./components/SWUpdateToast";
+import { VersionUpdateToast } from "./components/VersionUpdateToast";
 
 function ErrorView() {
   const error = useRouteError();
@@ -47,6 +49,8 @@ export default function App() {
       <main className="flex-1">{error ? <ErrorView /> : <Outlet />}</main>
       <Footer />
       <PWAInstallBanner />
+      <SWUpdateToast />
+      <VersionUpdateToast />
     </div>
   );
 }

@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "postbuild": "node -e \"import('fs').then(fs=>fs.copyFileSync('dist/index.html','dist/404.html'))\"",
+    "build": "node scripts/generate-version.js && tsc --noEmit && vite build",
+    "postbuild": "node -e \"import('fs').then(fs=>fs.copyFileSync('dist/index.html','dist/404.html'))\" && node scripts/generate-version.js",
     "preview": "vite preview --port 4173",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate-version": "node scripts/generate-version.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",

@@ -14,7 +14,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "autoUpdate",
+      // We handle SW registration in main.tsx with custom update detection
+      // Disable script injection to avoid duplicate registration
+      injectRegister: false,
       includeAssets: ["favicon.svg", "robots.txt", "sitemap.xml"],
       manifest: {
         name: "OCTRI — Ocean Triathlon Team Egypt",
