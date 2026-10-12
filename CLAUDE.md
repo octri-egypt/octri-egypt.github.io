@@ -278,3 +278,33 @@ Users previously needed to manually clear browser cache/website data to see new 
 
 ### Deployment
 Push to `main` branch → GitHub Actions builds + deploys. Users with cached versions auto-notified via toasts. **No manual cache clearing ever required.**
+
+## Navigation Bug Fix: useVersionCheck Infinite Loop (2026-10-12, commit 50210ed)
+
+**Symptom:** clicking any internal link updated the address bar (pushState) but the page
+only rendered after a manual browser refresh.
+
+**Root cause — NOT routing/paths/SW:** `src/hooks/use-version-check.ts` (behind
+`VersionUpdateToast`) had an infinite render/fetch loop with two drivers:
+1. `checkNow` called `setLatestVersion(version)` on every poll with a freshly parsed JSON
+   object (new identity even when unchanged). Because `checkNow` is a
+   `useCallback([fetchVersion, currentVersion])`, each new object recreated the callback →
+   `useEffect(..., [checkNow])` re-ran → `checkNow()` again → forever (~71 version.json
+   fetches / 10s).
+2. The same effect re-initialized state from `localStorage` on every run
+   (`setCurrentVersion(JSON.parse(stored))` — new identity each time).
+
+The perpetual render churn starved React's scheduler, so react-router's transition-based
+navigation never committed. Popstate (Back/Forward) worked because it forces a sync update.
+
+**Fix:** only set version state when `buildId` actually differs, and initialize from
+localStorage once per mount (`initializedRef` guard).
+
+**Lessons for future sessions:**
+- "URL changes but view doesn't until refresh" in a React Router SPA = suspect a render
+  loop starving React's transition scheduler, not the router.
+- Never `setState` with a fresh object identity on every poll inside a callback that a
+  `useCallback`/`useEffect` dependency chain closes over.
+- To debug nav here: Playwright is installed (chromium in `%LOCALAPPDATA%/ms-playwright`);
+  build → `vite preview` (port 4173); a `MutationObserver` on `#root` shows zero React
+  commits during the bug. Bisect by stripping `App.tsx` children.
