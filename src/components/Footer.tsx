@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Linkedin, Mail, MapPin, Phone, Map, ArrowRight } from "lucide-react";
 import { SOCIAL, CONTACT, JOIN_FORM } from "@/lib/constants";
-import { WaveBackground } from "@/components/WaveBackground";
 
 interface TikTokProps {
   size?: number;
@@ -35,8 +34,9 @@ export function Footer() {
           d="M0 28 C 120 8 240 48 360 34 C 480 20 600 2 720 18 C 840 34 960 52 1080 40 C 1200 28 1320 10 1440 24 L 1440 56 L 0 56 Z"
         />
       </svg>
-      <div className="relative bg-secondary border-t border-border/50 overflow-hidden">
-        <WaveBackground subtle className="absolute inset-0 opacity-40" />
+      {/* Translucent footer surface — the global Vanta WAVES layer shows
+          through softly behind the content. */}
+      <div className="relative bg-secondary/85 backdrop-blur-md border-t border-border/50 overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-px accent-bar opacity-70" />
         <div className="relative container mx-auto px-6 py-12 grid md:grid-cols-4 gap-8">
         <div className="md:col-span-2">

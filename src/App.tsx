@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Outlet, useLocation, useRouteError, isRouteErrorResponse } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { GlobalWaves } from "./components/GlobalWaves";
 import { StructuredData } from "./components/StructuredData";
 import { PWAInstallBanner } from "./components/PWAInstallBanner";
 import { SWUpdateToast } from "./components/SWUpdateToast";
@@ -43,7 +44,9 @@ export default function App() {
   }, [location.pathname, location.hash]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-transparent">
+      {/* Single site-wide Vanta WAVES layer — fixed behind all content. */}
+      <GlobalWaves />
       <StructuredData />
       <Header />
       <main className="flex-1">{error ? <ErrorView /> : <Outlet />}</main>

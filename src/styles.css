@@ -163,12 +163,14 @@
       var(--gradient-hero);
   }
 
-  /* Wave background host — static sky-water gradient paints instantly, then the
-   Vanta canvas (or this same gradient if WebGL/reduced-motion fallback) sits on top. */
+  /* Wave background host (GlobalWaves) — static sky-water gradient paints
+     instantly, then the Vanta canvas (or this same gradient if WebGL is
+     unavailable / reduced motion) sits on top. Matched to the steel-blue
+     Vanta palette (crests 0x4b8aa7 on a pale sky base). */
 .wave-bg {
   background:
-    radial-gradient(110% 80% at 50% -10%, oklch(0.75 0.09 210 / 0.9), transparent 70%),
-    linear-gradient(180deg, oklch(0.86 0.06 220) 0%, var(--color-background) 100%);
+    radial-gradient(110% 80% at 50% -10%, oklch(0.68 0.08 225 / 0.85), transparent 70%),
+    linear-gradient(180deg, oklch(0.86 0.055 222) 0%, var(--color-background) 100%);
 }
 .wave-bg canvas { display: block; }
 

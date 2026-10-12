@@ -7,7 +7,6 @@ import cycleImg from "@/assets/cycling_program.webp";
 import runImg from "@/assets/running_program.webp";
 import communityImg from "@/assets/Organize_your_goals_with_us.webp";
 import { SectionHeading } from "@/components/SectionHeading";
-import { WaveBackground } from "@/components/WaveBackground";
 import { Reveal } from "@/components/Reveal";
 import { useDocumentTitle } from "@/hooks/use-document-title";
 import { JOIN_FORM } from "@/lib/constants";
@@ -30,9 +29,8 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO — animated Vanta Waves (deep ocean) */}
+      {/* HERO — the global Vanta WAVES layer shows straight through */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <WaveBackground className="absolute inset-0" />
         <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 bg-gradient-overlay pointer-events-none" />
 
@@ -174,7 +172,6 @@ export default function Home() {
       <section className="pb-14">
         <div className="container mx-auto px-6">
           <Reveal className="relative overflow-hidden rounded-3xl card-glass">
-            <WaveBackground subtle className="absolute inset-0" />
             <div className="relative grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center p-8 md:p-12">
               <div>
                 <Users className="text-primary mb-4" size={40} />
