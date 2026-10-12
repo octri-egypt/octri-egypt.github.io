@@ -1,7 +1,13 @@
 import { Dumbbell, Hand, Flame, Waves, Bike, Activity, Footprints, PersonStanding, Wind } from "lucide-react";
-import swimImg from "@/assets/swim.jpg";
-import cycleImg from "@/assets/cycle.jpg";
-import runImg from "@/assets/run.jpg";
+import swimImg from "@/assets/swimming_fitness.webp";
+import cycleImg from "@/assets/cycling_fitness.webp";
+import runImg from "@/assets/running_fitness.webp";
+import upperBodyImg from "@/assets/upper_body.webp";
+import lowerBodyImg from "@/assets/lower_body.webp";
+import coreImg from "@/assets/core.webp";
+import triathlonImg from "@/assets/triathlon_fitness.webp";
+import mobilityImg from "@/assets/mobility.webp";
+import flexibilityImg from "@/assets/flexbility.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { PageHeader } from "@/components/PageHeader";
 import { useDocumentTitle } from "@/hooks/use-document-title";
@@ -18,15 +24,15 @@ type Focus = {
 };
 
 const focusAreas: Focus[] = [
-  { name: "Upper Body", icon: Hand, desc: "Build pulling and pushing strength for swim strokes and bike control." },
-  { name: "Lower Body", icon: Footprints, desc: "Powerful quads, glutes, and calves for climbs, kicks, and sprints." },
-  { name: "Core", icon: Dumbbell, desc: "A stable, efficient torso that transfers power across all three disciplines." },
+  { name: "Upper Body", icon: Hand, desc: "Build pulling and pushing strength for swim strokes and bike control.", img: upperBodyImg },
+  { name: "Lower Body", icon: Footprints, desc: "Powerful quads, glutes, and calves for climbs, kicks, and sprints.", img: lowerBodyImg },
+  { name: "Core", icon: Dumbbell, desc: "A stable, efficient torso that transfers power across all three disciplines.", img: coreImg },
   { name: "Swimming Fitness", icon: Waves, desc: "Conditioning that extends your distance and sharpens open-water endurance.", img: swimImg },
   { name: "Cycling Fitness", icon: Bike, desc: "Sustained power and cadence for long rides and time trials.", img: cycleImg },
   { name: "Running Fitness", icon: Activity, desc: "Running economy and resilience for faster, injury-free miles.", img: runImg },
-  { name: "Triathlon Fitness", icon: Flame, desc: "Brick sessions that blend swim, bike, and run into race-ready fitness." },
-  { name: "Mobility", icon: PersonStanding, desc: "Joint range and movement quality that keep you training consistently." },
-  { name: "Flexibility", icon: Wind, desc: "Targeted stretching to recover faster and move without restriction." },
+  { name: "Triathlon Fitness", icon: Flame, desc: "Brick sessions that blend swim, bike, and run into race-ready fitness.", img: triathlonImg },
+  { name: "Mobility", icon: PersonStanding, desc: "Joint range and movement quality that keep you training consistently.", img: mobilityImg },
+  { name: "Flexibility", icon: Wind, desc: "Targeted stretching to recover faster and move without restriction.", img: flexibilityImg },
 ];
 
 export default function Fitness() {

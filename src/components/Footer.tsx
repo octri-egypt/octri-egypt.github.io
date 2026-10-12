@@ -71,7 +71,7 @@ export function Footer() {
 
         <div>
           <h4 className="font-display text-lg mb-4 text-foreground">Explore</h4>
-          <ul className="space-y-2 text-muted-foreground">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-muted-foreground">
             <li><Link to="/about" className="hover:text-primary transition-smooth">About</Link></li>
             <li><Link to="/services" className="hover:text-primary transition-smooth">Programs</Link></li>
             <li><Link to="/offers" className="hover:text-primary transition-smooth">Offers</Link></li>
