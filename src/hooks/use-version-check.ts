@@ -35,6 +35,11 @@ export function useVersionCheck(): VersionCheckState & {
   const [error, setError] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const mountedRef = useRef(true);
+  // One-time localStorage initialization guard. Re-setting state from storage on
+  // every effect run creates a new object identity, recreates `checkNow` via
+  // useCallback, and re-runs this effect forever — an infinite fetch/render
+  // loop that starved React's scheduler and broke SPA navigation rendering.
+  const initializedRef = useRef(false);
 
   // Fetch version.json from the server
   const fetchVersion = useCallback(async (): Promise<VersionInfo | null> => {
@@ -74,20 +79,25 @@ export function useVersionCheck(): VersionCheckState & {
     }
 
     if (version) {
-      setLatestVersion(version);
-
       // If we don't have a current version yet, this is the first check
       // Store it as the current version
       if (!currentVersion) {
         setCurrentVersion(version);
+        setLatestVersion(version);
         try {
           localStorage.setItem(VERSION_STORAGE_KEY, JSON.stringify(version));
         } catch {
           // Ignore storage errors
         }
       } else {
-        // Compare buildId to detect new deployment
+        // Compare buildId to detect new deployment.
+        // Only touch state when the build actually changed — setting state
+        // with a fresh (identical-content) object on every poll recreated
+        // `checkNow` via useCallback, re-running this effect and fetching
+        // version.json in an infinite loop that starved React's scheduler
+        // and broke client-side navigation rendering.
         if (version.buildId !== currentVersion.buildId) {
+          setLatestVersion(version);
           setUpdateAvailable(true);
         }
       }
@@ -116,15 +126,18 @@ export function useVersionCheck(): VersionCheckState & {
   useEffect(() => {
     mountedRef.current = true;
 
-    // Try to load stored version from localStorage
-    try {
-      const stored = localStorage.getItem(VERSION_STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored) as VersionInfo;
-        setCurrentVersion(parsed);
+    // Try to load stored version from localStorage (once per mount)
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      try {
+        const stored = localStorage.getItem(VERSION_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored) as VersionInfo;
+          setCurrentVersion(parsed);
+        }
+      } catch {
+        // Ignore storage errors
       }
-    } catch {
-      // Ignore storage errors
     }
 
     // Initial check
