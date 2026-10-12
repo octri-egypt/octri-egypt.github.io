@@ -6,7 +6,7 @@ import { JOIN_FORM, CONTACT, SOCIAL } from "@/lib/constants";
 export default function Contact() {
   useDocumentTitle("Contact Us", "Get in touch with Ocean Triathlon Team Egypt. Join us, ask about coaching programs, or partner with OCTRI. Location in Cairo, email, phone, and WhatsApp.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Get In Touch"
@@ -14,7 +14,7 @@ export default function Contact() {
           description="Questions about programs, schedules, or joining the team? We're here."
         />
 
-        <div className="mt-16 grid lg:grid-cols-2 gap-10">
+        <div className="mt-10 grid lg:grid-cols-2 gap-10">
           <div className="space-y-4">
             {[
               { icon: MapPin, label: "Location", value: CONTACT.location, sub: CONTACT.locationDetail, href: undefined as string | undefined },
@@ -54,7 +54,7 @@ export default function Contact() {
           </div>
 
           <form className="p-8 card-glass rounded-2xl space-y-4">
-            <h2 className="font-display text-2xl uppercase mb-4">Send a Message</h2>
+            <h2 className="font-display text-2xl uppercase mb-3">Send a Message</h2>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Name</label>
               <input type="text" className="mt-2 w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary outline-none transition-smooth" placeholder="Your name" />

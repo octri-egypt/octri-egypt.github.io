@@ -32,7 +32,7 @@ const focusAreas: Focus[] = [
 export default function Fitness() {
   useDocumentTitle("Fitness & Conditioning", "Strength, conditioning, and fitness training programs designed for triathletes by OCTRI coaches. Upper body, lower body, core, mobility, and triathlon-specific fitness.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Fitness"
@@ -40,7 +40,7 @@ export default function Fitness() {
           description="Focused fitness tracks that complement your swim, bike, and run — from strength and mobility to full triathlon conditioning."
         />
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {focusAreas.map((f) => (
             <article key={f.name} className="group relative overflow-hidden card-glass rounded-2xl hover:border-primary/50">
               {f.img ? (
@@ -66,7 +66,7 @@ export default function Fitness() {
           ))}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeading center title="Want the Details?" description="Click join to check the full program details and start training." />
           <div className="flex justify-center">
             <a

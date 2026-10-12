@@ -48,7 +48,7 @@ function PriceCard({ title, icon: Icon, rows, badge }: { title: string; icon: ty
 export default function Offers() {
   useDocumentTitle("Membership Offers & Pricing", "View current OCTRI Egypt membership offers and training packages for Swimming, Cycling, Running, Fitness, and Nutrition programs.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Training Offers"
@@ -56,7 +56,7 @@ export default function Offers() {
           description="Flexible on-site and online training plans. Pick a single discipline or the full triathlon — Swim, Bike, Run, Fitness, and Nutrition."
         />
 
-        <div className="mt-16 grid lg:grid-cols-2 gap-6">
+        <div className="mt-10 grid lg:grid-cols-2 gap-6">
           <PriceCard title="On-Site Programs" icon={MapPin} badge="Train with us in Cairo" rows={onsiteRows} />
           <PriceCard title="Online Programs" icon={Globe} badge="Train anywhere" rows={onsiteRows} />
         </div>
@@ -70,7 +70,7 @@ export default function Offers() {
           ))}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeading center title="Ready to Start?" description="Subscribe to check your offer and join Egypt's strongest triathlon community." />
           <div className="flex justify-center">
             <a

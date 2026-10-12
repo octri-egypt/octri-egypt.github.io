@@ -26,7 +26,7 @@ const galleryTags = [
 export default function Achievements() {
   useDocumentTitle("Achievements & Race Results", "OCTRI athletes' race results, podium finishes, and championship titles in Egypt triathlon events since 2017.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Achievements"
@@ -34,7 +34,7 @@ export default function Achievements() {
           description="Some of our team's achievements and milestones over the past couple of years — earned in pools, on the road, and across the finish line."
         />
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {achievements.map((a, i) => (
             <article key={i} className="group p-6 card-glass rounded-2xl hover:border-primary/50">
               <div className="flex items-center justify-between mb-4">
@@ -51,7 +51,7 @@ export default function Achievements() {
           ))}
         </div>
 
-        <div className="mt-20">
+        <div className="mt-12">
           <SectionHeading center eyebrow="In Training" title="What Drives Us" description="The moments, the mindset, and the team behind every result." />
           <div className="flex flex-wrap justify-center gap-2.5">
             {galleryTags.map((t) => (

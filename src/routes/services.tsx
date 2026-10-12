@@ -33,7 +33,7 @@ const services = [
 export default function Services() {
   useDocumentTitle("Training Programs", "Explore OCTRI's professional triathlon training programs: Swimming, Cycling, and Running. Certified coaches, structured plans for all levels.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Programs"
@@ -41,7 +41,7 @@ export default function Services() {
           description="Triathlon Team (Swim · Bike · Run). Pick a single discipline or train the full triathlon."
         />
 
-        <div className="mt-16 space-y-8">
+        <div className="mt-10 space-y-8">
           {services.map((s, i) => (
             <article key={s.title} className={`grid lg:grid-cols-2 gap-8 items-center ${i % 2 ? "lg:[&>div:first-child]:order-2" : ""}`}>
               <div className="relative overflow-hidden rounded-2xl shadow-card group max-w-lg w-full">
@@ -69,7 +69,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-12 text-center">
           <SectionHeading center title="Ready to Begin?" description="Sign up today and join Egypt's strongest triathlon community." />
           <a
             href={JOIN_FORM}

@@ -78,7 +78,7 @@ const partners: Partner[] = [
 export default function Partners() {
   useDocumentTitle("Partners & Sponsors", "Organizations and brands supporting Ocean Triathlon Team Egypt: Bike Masters, BLK Cat AGNC, and Ocean Triathlon Academy.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Our Partners"
@@ -86,7 +86,7 @@ export default function Partners() {
           description="The brands and academy that power Ocean Triathlon Team — on the road, in the water, and across every finish line."
         />
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {partners.map((p) => (
             <article key={p.name} className="p-7 card-glass rounded-2xl hover:border-primary/50">
               <h3 className="font-display text-2xl uppercase">{p.name}</h3>
@@ -115,7 +115,7 @@ export default function Partners() {
           ))}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeading center title="Join the Team" description="Become part of OCTRI and train with our partners' support." />
           <div className="flex justify-center">
             <a

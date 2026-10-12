@@ -37,9 +37,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-overlay pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10 pt-28 pb-16">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="animate-fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-5">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Egypt · Since 2017
               </div>
@@ -47,25 +47,25 @@ export default function Home() {
                 Together <br />
                 <span className="text-gradient">We Tri.</span>
               </h1>
-              <p className="mt-6 text-lg md:text-xl text-foreground/90 max-w-xl">
+              <p className="mt-4 text-lg md:text-xl text-foreground/90 max-w-xl">
                 Ocean Triathlon Team — where swimmers, cyclists, and runners come together
                 to train, compete, and become <span className="text-green font-semibold">unstoppable</span>.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href={JOIN_FORM}
                   target="_blank" rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-bold shadow-glow hover:scale-105 transition-smooth"
+                  className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-primary text-primary-foreground font-bold shadow-glow hover:scale-105 transition-smooth"
                 >
                   Join Us Today
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-smooth" />
                 </a>
-                <Link to="/services" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-border bg-background/30 backdrop-blur-sm font-semibold hover:bg-background/60 hover:border-primary/50 transition-smooth">
+                <Link to="/services" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border bg-background/30 backdrop-blur-sm font-semibold hover:bg-background/60 hover:border-primary/50 transition-smooth">
                   Explore Programs
                 </Link>
               </div>
 
-              <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl">
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl">
                 {stats.map((s) => (
                   <div key={s.label} className="border-l-2 border-primary/70 pl-4">
                     <div className="font-display text-3xl md:text-4xl text-foreground">{s.value}</div>
@@ -94,7 +94,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 flex justify-center lg:hidden">
+          <div className="mt-10 flex justify-center lg:hidden">
             <a href="#services" aria-label="Scroll to services" className="text-muted-foreground hover:text-primary transition-smooth">
               <ChevronDown size={28} className="animate-float" />
             </a>
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES — compact premium cards */}
-      <section id="services" className="py-24 relative">
+      <section id="services" className="py-14 relative">
         <div className="container mx-auto px-6">
           <Reveal>
             <SectionHeading eyebrow="What We Offer" title="Our Services" description="Three disciplines, one mindset. Every program is designed by certified coaches to take you from beginner to podium." />
@@ -137,8 +137,8 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-14 relative overflow-hidden">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <Reveal className="relative max-w-md w-full">
             <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
             <img src={teamImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="relative rounded-2xl border border-border shadow-card w-full" />
@@ -156,12 +156,12 @@ export default function Home() {
               professional and amateur athletes. We build your strength, fitness, and agility
               so you can compete and enjoy being fit and strong.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed mt-4">
+            <p className="text-muted-foreground text-lg leading-relaxed mt-3">
               Our athletes compete strongly across all local triathlon events. OCTRI's
               professionally designed programs help you escape day-to-day pressures and
               recharge your energy. Get outdoors and join us to build a stronger you.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               {["Pro Coaching", "All Levels", "Community", "Race Ready"].map((t) => (
                 <span key={t} className="px-4 py-2 rounded-full border border-border bg-secondary/50 text-sm backdrop-blur-sm">{t}</span>
               ))}
@@ -171,21 +171,21 @@ export default function Home() {
       </section>
 
       {/* COMMUNITY CTA — animated waves with a compact side photo */}
-      <section className="pb-24">
+      <section className="pb-14">
         <div className="container mx-auto px-6">
           <Reveal className="relative overflow-hidden rounded-3xl card-glass">
             <WaveBackground subtle className="absolute inset-0" />
-            <div className="relative grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center p-10 md:p-16">
+            <div className="relative grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center p-8 md:p-12">
               <div>
                 <Users className="text-primary mb-4" size={40} />
                 <h2 className="font-display text-4xl md:text-6xl uppercase">
                   Organize your <span className="text-gold">goals</span> <span className="text-gradient">with us.</span>
                 </h2>
-                <p className="mt-5 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-muted-foreground">
                   Whether you're chasing your first finish line or your next podium —
                   OCTRI is the team that takes you there.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <a
                     href={JOIN_FORM}
                     target="_blank" rel="noopener noreferrer"

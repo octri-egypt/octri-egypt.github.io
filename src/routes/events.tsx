@@ -39,7 +39,7 @@ const events: Event[] = [
 export default function Events() {
   useDocumentTitle("Upcoming Events & Training Camps", "OCTRI team events, training camps, and race calendar for triathletes in Egypt. From endurance festivals to free community sessions.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Events"
@@ -47,7 +47,7 @@ export default function Events() {
           description="From endurance festivals to free community sessions — here's where OCTRI trains, races, and celebrates."
         />
 
-        <div className="mt-16 space-y-6">
+        <div className="mt-10 space-y-6">
           {events.map((e, i) => (
             <article key={i} className="grid md:grid-cols-4 gap-6 p-7 card-glass rounded-2xl hover:border-primary/50 transition-smooth">
               <div className="md:col-span-1">
@@ -71,7 +71,7 @@ export default function Events() {
           ))}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <SectionHeading center title="Join the Next One" description="Never miss a session — join OCTRI and train with the team." />
           <div className="flex justify-center">
             <a

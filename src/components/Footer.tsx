@@ -27,7 +27,7 @@ const MAPS_URL = "https://maps.app.goo.gl/97daZ8knbEExrAtJ6";
 
 export function Footer() {
   return (
-    <footer className="relative mt-24">
+    <footer className="relative mt-14">
       {/* Wave crest separating page from footer */}
       <svg viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" className="w-full h-12 block text-secondary -mb-px">
         <path
@@ -38,7 +38,7 @@ export function Footer() {
       <div className="relative bg-secondary border-t border-border/50 overflow-hidden">
         <WaveBackground subtle className="absolute inset-0 opacity-40" />
         <div className="absolute top-0 inset-x-0 h-px accent-bar opacity-70" />
-        <div className="relative container mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
+        <div className="relative container mx-auto px-6 py-12 grid md:grid-cols-4 gap-8">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <img src="/favicon.svg" alt="" width={40} height={40} className="w-10 h-10" />
@@ -47,11 +47,11 @@ export function Footer() {
               <div className="text-[10px] tracking-[0.2em] text-primary uppercase">Together We Tri</div>
             </div>
           </div>
-          <p className="mt-5 text-muted-foreground max-w-md">
+          <p className="mt-4 text-muted-foreground max-w-md">
             Ocean Triathlon Team — Egypt's home for swim, bike, and run athletes.
             Building stronger bodies and sharper minds since 2017.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-3">
             <a
               href={JOIN_FORM}
               target="_blank" rel="noopener noreferrer"
@@ -100,7 +100,7 @@ export function Footer() {
           </div>
         </div>
         </div>
-        <div className="relative border-t border-border/50 py-6 text-center text-sm text-muted-foreground">
+        <div className="relative border-t border-border/50 py-4 text-center text-sm text-muted-foreground">
           © {new Date().getFullYear()} Ocean Triathlon Team. All rights reserved.
         </div>
       </div>

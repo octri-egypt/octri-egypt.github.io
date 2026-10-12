@@ -16,10 +16,10 @@ const sessions: Record<string, { name: string; time: string; icon: typeof Waves 
 export default function Schedule() {
   useDocumentTitle("Weekly Training Schedule", "Weekly training schedule for swimming, cycling, and running sessions with OCTRI Egypt. Consistent daily sessions across Cairo locations.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-3">
             <span className="w-8 h-px bg-primary" /> Weekly Schedule
           </div>
           <h1 className="font-display text-5xl md:text-7xl uppercase">
@@ -30,10 +30,10 @@ export default function Schedule() {
           </p>
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {days.map((d) => (
             <div key={d} className="p-6 card-glass rounded-2xl">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-3">
                 <h3 className="font-display text-2xl uppercase">{d}</h3>
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">Day</div>
               </div>

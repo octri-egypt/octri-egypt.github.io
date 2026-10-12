@@ -27,14 +27,14 @@ const principles = [
 export default function About() {
   useDocumentTitle("About OCTRI", "Learn about Ocean Triathlon Team Egypt, established in 2017. Professional coaching for competitive and amateur triathletes in Cairo.");
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 pb-12">
       <section className="container mx-auto px-6">
         <PageHeader
           eyebrow="Who We Are"
           title={<>Built for those who <span className="text-gradient">refuse to quit.</span></>}
         />
 
-        <div className="grid lg:grid-cols-2 gap-12 mt-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 mt-10 items-start">
           <img src={aboutImg} alt="Ocean Triathlon Team training session" loading="lazy" width={1024} height={1024} className="rounded-2xl shadow-card w-full max-w-md" />
           <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
             <p>
@@ -54,7 +54,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-16">
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
           {principles.map((p) => (
             <div key={p.title} className="p-7 card-glass rounded-2xl">
               <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
@@ -66,7 +66,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-24">
+        <div className="mt-12">
           <SectionHeading center eyebrow="What We Stand For" title="Our Values" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
